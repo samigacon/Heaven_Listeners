@@ -1,7 +1,7 @@
-# Heaven_Listeners
-Final Project - Music Library
+# Heaven Listeners
+Final 3WA Project - Music Library
 
-# Front With React + Vite Template
+# Basis Front With React + Vite Template
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
