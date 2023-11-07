@@ -1,0 +1,11 @@
+{
+  "name": "heaven_listeners_front",
+  "version": "1.0.0",
+  "description": "partie front du projet heaven_listeners",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sami gacon",
+  "license": "ISC"
+}
