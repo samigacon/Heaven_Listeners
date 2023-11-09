@@ -5,18 +5,6 @@ CREATE TABLE User (
     Password VARCHAR(255)
 );
 
-CREATE TABLE Track (
-    Track_ID INT PRIMARY KEY,
-    Title VARCHAR(255),
-    Duration INT,
-    Release_Date DATE,
-    Cover VARCHAR(255),
-    Album_ID INT,
-    History_ID INT,
-    FOREIGN KEY (Album_ID) REFERENCES Album(Album_ID),
-    FOREIGN KEY (History_ID) REFERENCES History(History_ID)
-);
-
 CREATE TABLE Album (
     Album_ID INT PRIMARY KEY,
     Title VARCHAR(255),
@@ -55,6 +43,17 @@ CREATE TABLE History (
     FOREIGN KEY (User_ID) REFERENCES User(User_ID)
 );
 
+CREATE TABLE Track (
+    Track_ID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    Duration INT,
+    Release_Date DATE,
+    Cover VARCHAR(255),
+    Album_ID INT,
+    History_ID INT,
+    FOREIGN KEY (Album_ID) REFERENCES Album(Album_ID),
+    FOREIGN KEY (History_ID) REFERENCES History(History_ID)
+);
 
 -- Many-to-Many Tables
 CREATE TABLE Track_Album (
