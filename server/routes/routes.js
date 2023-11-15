@@ -1,7 +1,10 @@
 const express = require("express")
 
 //Controllers
-
+const favoritesController = require('../controllers/favorites.js')
+const historicController = require('../controllers/historic.js')
+const playlistsController = require('../controllers/playlists.js')
+const userController = require('../controllers/user.js')
 
 
 // Access to Admin Routes
@@ -13,9 +16,9 @@ function isAuthenticated(req, res, next) {
     }
 }
 
+
 // Routes
 const router = express.Router()
-
 
 
 

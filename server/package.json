@@ -1,19 +1,19 @@
 {
-  "name": "heaven_listeners_back",
-  "version": "1.0.0",
-  "description": "partie back du projet heaven listeners",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server.js"
-  },
-  "author": "sami gacon",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "express": "^4.18.2",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+    "name": "heaven listeners back",
+    "version": "1.0.0",
+    "description": "partie back du projet heaven listeners",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "author": "sami gacon",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "express": "^4.18.2",
+        "mysql2": "^3.6.3"
+     },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
 }
