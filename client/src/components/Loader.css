@@ -1,0 +1,9 @@
+.loader-container {
+  width: 100%;
+}
+
+.loader {
+  display: inline-block;
+  margin: auto;
+  box-sizing: border-box;
+}
