@@ -1,11 +1,30 @@
-# Heaven Listeners
-Final 3WA Project - Music Library
+# Welcome to Heaven Listeners
+This is my last 3WA project, a music library.
 
-# Basis Front With React + Vite Template
+# How to access and start from the 3WA IDE, with 2 command terminals:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front terminal :
+    - cd sites/final_project/heaven_listeners/client
+    - npm run dev
+    
+Back terminal: 
+    - cd sites/final_project/heaven_listeners/server
+    - npm start
 
-Currently, two official plugins are available:
+# If you are using another IDE, with 2 command terminals:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Front terminal :
+    - cd client
+    - npm run dev
+    
+Back terminal: 
+    - cd server
+    - npm start
+    
+You can find in the folder "data":
+    - database.sql
+    - MCD and MPD schemas
+    
+Thanks for reading !
+
+Sami Gacon
