@@ -25,10 +25,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Router>
                 <Header />
-                <h2>Welcome to Heaven Listeners ! Below is the Header component, the Routes, and the Footer</h2>
                 <Routes>
                     <Route path="/" element={ <HomePage /> } />
                     <Route path="/search" element={ <SearchPage /> } />

@@ -6,7 +6,7 @@ export default function PlaylistChangePage () {
     
     return (
         <>
-
+            <h2>Here is the Change Playlist Page !</h2>
         </>
     )
 }
