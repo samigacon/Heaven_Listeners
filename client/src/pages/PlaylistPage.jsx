@@ -8,7 +8,9 @@ export default function PlaylistPage () {
     
     return (
         <>
-            <h1>Playlists</h1>
+            <h1>Playlist</h1>
+            <button className="rename-playlist"><Link to="/playlist-rename">Rename Playlist</Link></button>
+            <button className="delete-playlist"><Link to="/library">Delete Playlist</Link></button>
         </>
     )
 }

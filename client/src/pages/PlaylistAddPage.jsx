@@ -9,6 +9,10 @@ export default function PlaylistAddPage () {
     return (
         <>
             <h1>Add Playlist</h1>
+            <div className="search-bar creating-playlist">
+                <input type="text" placeholder="Put the name"/>
+                <button><Link to="/library">Add</Link></button>
+            </div>
         </>
     )
 }
