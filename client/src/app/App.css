@@ -1,5 +1,4 @@
 .container {
-  display: block;
   margin: auto;
   background-color: #f0f0f0;
   width: 33%;
@@ -16,11 +15,15 @@ h1, h2, h3, p, ul, li, a {
 }
 
 h1 {
+  font-size: 40px;
+}
+
+h2 {
   font-size: 30px;
 }
 
 p {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 ul {
@@ -35,17 +38,39 @@ li {
   padding: 10px;
 }
 
-a {
+header a {
   margin: 10px;
   text-decoration: none;
   color: #000;
-  background-color: #1E90FF;
+  background-color: #1e90ff;
   border-radius: 15px;
 }
 
-a:hover {
+header a:hover {
   color: #fff;
   transition: 0.2s;
+}
+
+.home-historic, .home-favorites, .home-playlists {
+  margin: auto;
+  width: 75%;
+  height: 50px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.button-historic, .button-favorites, .button-playlists {
+  width: 20%;
+  margin-left: 30px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.homepage a {
+  text-decoration: none;
+  list-style-type: none;
 }
 
 footer {
