@@ -49,6 +49,7 @@ header a {
 header a:hover {
   color: #fff;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .home-history, .home-favorites, .home-playlists {
@@ -71,6 +72,7 @@ header a:hover {
 .button-history:hover, .button-favorites:hover, .button-playlists:hover {
   color: #fff;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .homepage a {
@@ -85,7 +87,29 @@ header a:hover {
 }
 
 ::placeholder {
-  font-size: 10px;
+  font-size: 12px;
+  font-family: "Bebas Neue";
+  padding-left: 2px;
+  opacity: 0.5;
+}
+
+button {
+  font-family: "Bebas Neue";
+  border-radius: 5px;
+  border: 1px solid;
+  margin: 0 5px;
+  background-color: #fff;
+}
+
+button:hover {
+  font-family: "Bebas Neue";
+  border-radius: 5px;
+  border: 1px solid;
+  margin: 0 5px;
+  color: #fff;
+  background-color: #1e90ff;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .search-artist, .search-track, .search-album {

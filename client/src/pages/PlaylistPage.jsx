@@ -8,7 +8,7 @@ export default function PlaylistPage () {
     
     return (
         <>
-            <h1>My Playlists</h1>
+            <h1>Playlists</h1>
         </>
     )
 }
