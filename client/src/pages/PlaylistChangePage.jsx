@@ -1,12 +1,14 @@
 import Loader from '../components/Loader'
 
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 export default function PlaylistChangePage () {
     
     
     
     return (
         <>
-            <h2>Here is the Change Playlist Page !</h2>
+            <h1>Change Playlist</h1>
         </>
     )
 }

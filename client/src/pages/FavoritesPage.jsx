@@ -1,12 +1,14 @@
 import Loader from '../components/Loader'
 
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 export default function FavoritesPage () {
     
     
     
     return (
         <>
-            <h2>Here is the Favorites Page !</h2>  
+            <h1>Favorites</h1>  
         </>
     )
 }

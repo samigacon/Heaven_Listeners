@@ -23,7 +23,7 @@ h2 {
 }
 
 p {
-  font-size: 20px;
+  font-size: 10px;
 }
 
 ul {
@@ -51,7 +51,7 @@ header a:hover {
   transition: 0.2s;
 }
 
-.home-historic, .home-favorites, .home-playlists {
+.home-history, .home-favorites, .home-playlists {
   margin: auto;
   width: 75%;
   height: 50px;
@@ -60,7 +60,7 @@ header a:hover {
   border-radius: 15px;
 }
 
-.button-historic, .button-favorites, .button-playlists {
+.button-history, .button-favorites, .button-playlists {
   width: 20%;
   margin-left: 30px;
   padding: 5px;
@@ -68,9 +68,39 @@ header a:hover {
   border-radius: 15px;
 }
 
+.button-history:hover, .button-favorites:hover, .button-playlists:hover {
+  color: #fff;
+  transition: 0.2s;
+}
+
 .homepage a {
   text-decoration: none;
   list-style-type: none;
+}
+
+.search-bar {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+::placeholder {
+  font-size: 10px;
+}
+
+.search-artist, .search-track, .search-album {
+  margin: auto;
+  width: 75%;
+  height: 50px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.search-tag {
+  width: 20%;
+  margin-left: 30px;
+  padding: 5px;
 }
 
 footer {

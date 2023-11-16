@@ -1,12 +1,14 @@
 import Loader from '../components/Loader'
 
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 export default function LoginPage () {
     
     
     
     return (
         <>
-            <h2>Here is the Profile Page !</h2>
+            <h1>Profile</h1>
         </>
     )
 }

@@ -2,13 +2,13 @@ import Loader from '../components/Loader'
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
-export default function PlaylistNewPage () {
+export default function HistoryPage () {
     
     
     
     return (
         <>
-            <h1>New Playlist</h1>
+            <h1>History</h1>
         </>
     )
 }

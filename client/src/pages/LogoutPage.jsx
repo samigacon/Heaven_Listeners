@@ -1,12 +1,14 @@
 import Loader from '../components/Loader'
 
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
 export default function LogoutPage () {
     
     
     
     return (
         <>
-            <h2>Here is the Logout Page !</h2>
+            <h1>Logout</h1>
         </>
     )
 }
