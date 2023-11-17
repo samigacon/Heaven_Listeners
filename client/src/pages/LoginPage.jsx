@@ -1,9 +1,9 @@
-import Loader from '../components/Loader'
-
+import React from 'react'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 export default function LoginPage () {
-    
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
     
     
     return (

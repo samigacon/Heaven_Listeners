@@ -21,7 +21,7 @@ import PlaylistRenamePage from '../pages/PlaylistRenamePage'
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
-function App() {
+export default function App() {
     return (
         <div className="container">
             <Router>
@@ -48,5 +48,3 @@ function App() {
         </div>
     )
 }
-
-export default App
