@@ -12,6 +12,7 @@ export default function LoginPage() {
         e.preventDefault();
         
         if (isUserLoggedIn) {
+            { console.log('Already connected') }
             setMessage('Already connected!');
             return;
         }
@@ -52,29 +53,27 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 const data = await response.json();
+                { console.log('Connection Done') }
                 setIsUserLoggedIn(true);
                 setMessage(data.message);
             } else {
+                { console.log('Authentication Error') }
                 setMessage('Authentication Error');
             }
         } catch (error) {
+             { console.log('Query Error') }
             setMessage('Query Error');
         }
     }
     
     const handleLogout = () => {
+        { console.log('Disconnection Done') }
         setIsUserLoggedIn(false);
     }
     
     return (
         <div className="login-page">
             <h1>Profile</h1>
-            { console.log('Before') }
-            { console.log(username) }
-            { console.log(password) }
-            { console.log(isUserLoggedIn) }
-            { console.log(isUserRegistering) }
-            { console.log(message) }
             {isUserLoggedIn ? 
                 (<button onClick={handleLogout}>Disconnection</button>) : 
                 (<form onSubmit={handleSubmit}>
@@ -100,12 +99,11 @@ export default function LoginPage() {
                 )
             }
             {message && <p>{message}</p>}
-            { console.log('After') }
-            { console.log(username) }
-            { console.log(password) }
-            { console.log(isUserLoggedIn) }
-            { console.log(isUserRegistering) }
-            { console.log(message) }
+            { console.log('Username : ' + username) }
+            { console.log('Password : ' + password) }
+            { console.log('IsUserLoggedIn? ' + isUserLoggedIn) }
+            { console.log('IsUserRegistering? ' + isUserRegistering) }
+            { console.log('Message : '+ message) }
         </div>
     )
 }
