@@ -8,7 +8,6 @@ import HomePage from '../pages/HomePage'
 import SearchPage from '../pages/SearchPage'
 import LibraryPage from '../pages/LibraryPage'
 import LoginPage from '../pages/LoginPage'
-import RegisterPage from '../pages/RegisterPage'
 import TrackPage from '../pages/TrackPage'
 import AlbumPage from '../pages/AlbumPage'
 import ArtistPage from '../pages/ArtistPage'
@@ -31,7 +30,6 @@ export default function App() {
                     <Route path="/search" element={ <SearchPage /> } />
                     <Route path="/library" element={ <LibraryPage /> } />
                     <Route path="/login" element={ <LoginPage /> } />
-                    <Route path="/register" element={ <RegisterPage /> } />
                     <Route path="/track" element={ <TrackPage /> } />
                     <Route path="/album" element={ <AlbumPage /> } />
                     <Route path="/artist" element={ <ArtistPage /> } />
