@@ -15,6 +15,7 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use('/', routes.router)
 
+
 // Create Session
 app.use(session({
     store: new FileStore({
@@ -24,36 +25,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
-// User State
-app.get('/', (req, res) => {
-  res.send(`User : ${req.session.connected ? 'Connected' : 'Disconnected'}`);
-});
-
-
-//Connection
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  if (username === 'votre_nom_utilisateur' && password === 'votre_mot_de_passe') {
-    req.session.connected = true;
-    res.status(200).json({ message: 'Authentication Successful' });
-  } else {
-    res.status(401).json({ message: 'Authentication Failed' });
-  }
-});
-
-
-//Disconnection
-app.post('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error('Disconnection Error:', err);
-      res.status(500).json({ message: 'Error Logging Out' });
-    } else {
-      res.status(200).json({ message: 'Logged Out Successfully' });
-    }
-  });
-});
 
 
 app.listen(PORT, () => {
