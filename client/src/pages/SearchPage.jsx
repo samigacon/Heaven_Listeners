@@ -9,8 +9,11 @@ export default function SearchPage () {
         <>
             <h1>Search</h1>
             <div className="search-bar">
-                <input type="text" placeholder="Searching by artist, track or album..."/>
-                <button>Search</button>
+                <form>
+                    <label htmlFor="searching"></label>
+                        <input type="text" name="searching" placeholder="Searching by artist, track or album..." required />
+                    <button>Search</button>
+                </form>
             </div>
             <h2 className ="search-tag">Artists</h2>
             <div className="search-artist">
