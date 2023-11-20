@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiDiscogs = "https://api.discogs.com/database/"
 
-export const dataApi = createApi({
+export const apiSlice = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({ baseUrl: apiDiscogs }),
     endpoints: (builder) => ({
@@ -39,4 +39,4 @@ export const dataApi = createApi({
     }),
 });
 
-export const { useGetAllDataQuery } = dataApi;
+export const { useGetAllDataQuery } = apiSlice;

@@ -30,7 +30,10 @@ router.get('/api/user/logout', userController.logout)
 
 
 /// Admin Routes ///
-router.get('/api/user/playlists', isAuthenticated, orderController.listForUser)
+router.get('/api/user/playlists-add', isAuthenticated, playlistsController.add)
+router.get('/api/user/playlists-delete', isAuthenticated, playlistsController.delete)
+router.get('/api/user/playlists-rename', isAuthenticated, playlistsController.rename)
+router.get('/api/user/playlists', isAuthenticated, playlistsController.modify)
 
 
 module.exports.router = router;
