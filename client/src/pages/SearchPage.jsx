@@ -1,7 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { useGetAllDataQuery } from "../features/api/apiSlice.js";
 
+export const Data = () => {
+    const { data: allData } = useGetAllDataQuery();
+    console.log(allData);
+}
+    
 export default function SearchPage () {
+    
     
     
     

@@ -1,21 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
+
 export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
-    const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
-    const [isUserRegistering, setIsUserRegistering] = React.useState(false);
+   // const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
+   // const [isUserRegistering, setIsUserRegistering] = React.useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
+        // LOGIN
+        /*
         if (isUserLoggedIn) {
             { console.log('Already connected') }
             setMessage('Already connected!');
             return;
         }
+        */
         
          /*
         const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{3,20}$/;
@@ -39,9 +43,9 @@ export default function LoginPage() {
              }
         }
         */
-    
+        /*
         try {
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch('http://localhost:3001/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,46 +68,61 @@ export default function LoginPage() {
              { console.log('Query Error') }
             setMessage('Query Error');
         }
-    }
+        */
+        
+        //REGISTER
+        try {
+            const response = await fetch('http://localhost:3001/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            });
     
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Fetch error:', error.message);
+        }
+    }
+    /*
     const handleLogout = () => {
         { console.log('Disconnection Done') }
         setIsUserLoggedIn(false);
     }
-    
+    */
+
     return (
         <div className="login-page">
             <h1>Profile</h1>
-            {isUserLoggedIn ? 
-                (<button onClick={handleLogout}>Disconnection</button>) : 
-                (<form onSubmit={handleSubmit}>
-                    <label htmlFor="username">Username</label>
-                        <input 
-                        type="text" 
-                        name="username" 
-                        placeholder="Username" required
-                        onChange={(e) => setUsername(e.target.value)}
-                        />
-                    <label htmlFor="password">Password</label>
-                        <input 
-                        type="password" 
-                        name="password" 
-                        placeholder="Password" required
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                    <button type="submit">{isUserRegistering ? 'Register' : 'Connection'}</button>
-                    <button onClick={() => setIsUserRegistering(!isUserRegistering)}>
-                        {isUserRegistering ? 'Press to Login' : 'Press to Register'}
-                    </button>
-                </form>
-                )
-            }
+               <form onSubmit={handleSubmit}>
+                <label htmlFor="username">Username</label>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username" required
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password" required
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">Register</button>
+            </form>
             {message && <p>{message}</p>}
             { console.log('Username : ' + username) }
             { console.log('Password : ' + password) }
-            { console.log('IsUserLoggedIn? ' + isUserLoggedIn) }
-            { console.log('IsUserRegistering? ' + isUserRegistering) }
-            { console.log('Message : '+ message) }
         </div>
     )
 }

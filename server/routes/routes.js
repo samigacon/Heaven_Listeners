@@ -1,14 +1,13 @@
 const express = require("express")
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
-
-/*
 //Controllers
 const favoritesController = require('../controllers/favorites.js')
 const historicController = require('../controllers/historic.js')
 const playlistsController = require('../controllers/playlists.js')
 const userController = require('../controllers/user.js')
-*/
+
 
 
 // Routes
@@ -33,6 +32,11 @@ function isAuthenticated(req, res, next) {
 
 
 /// Admin Routes ///
+
+// Register
+
+
+
 
 // Connection
 router.post('/login', (req, res) => {
