@@ -12,12 +12,27 @@ export const dataApi = createApi({
         }),
         
         // Register
-        
+        registerUser: builder.mutation({
+            query: ({username, password}) => ({
+               url: `/user/register`,
+               method: 'POST',
+               body: {username, password}
+            }), 
+        }),
         
         // Login
-        
+        loginUser: builder.mutation({
+            query: ({username, password}) => ({
+               url: `/user/login`,
+               method: 'POST',
+               body: {username, password}
+            }), 
+        }),
         
         // Logout
+        logoutUser: builder.mutation({
+            query: () => `/user/logout`,
+        }),
         
 
         

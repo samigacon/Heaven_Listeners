@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux'
+import { setUser } from '../features/user/userSlice'
 
 export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
+    const dispatch = useDispatch()
    // const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
    // const [isUserRegistering, setIsUserRegistering] = React.useState(false);
 
