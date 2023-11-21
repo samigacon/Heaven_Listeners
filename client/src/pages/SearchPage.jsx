@@ -1,27 +1,43 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import { useGetAllDataQuery } from "../features/api/apiSlice.js";
-
-export const Data = () => {
-    const { data: allData } = useGetAllDataQuery();
-    console.log(allData);
-}
+import { useSearchTracksQuery } from '../features/api/discogsApi';
     
 export default function SearchPage () {
+    const [searchQuery, setSearchQuery] = React.useState('');
+    const [searchResults, setSearchResults] = React.useState([]);
     
+    const { data, error, isLoading } = useSearchTracksQuery(searchQuery);
     
-    
-    
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        try {
+              if (data && data.results) {
+                setSearchResults(data.results);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+         }
+    }
+
     return (
         <>
             <h1>Search</h1>
             <div className="search-bar">
-                <form>
+                <form onSubmit={handleSearch}>
                     <label htmlFor="searching"></label>
-                        <input type="text" name="searching" placeholder="Searching by artist, track or album..." required />
-                    <button>Search</button>
+                        <input
+                            type="text"
+                            name="searching"
+                            placeholder="Searching by artist, track or album..."
+                            required
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                    <button type="submit">Search</button>
                 </form>
             </div>
+            { console.log('searchQuery : ' + searchQuery) }
+            { console.log('searchResults : ' + searchResults) }
             <h2 className ="search-tag">Artists</h2>
             <div className="search-artist">
                 <div className="artists"><Link to="/artist">Artist 1</Link></div>

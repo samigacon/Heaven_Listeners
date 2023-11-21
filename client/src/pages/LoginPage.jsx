@@ -1,16 +1,51 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
+import { useRegisterUserMutation, useLoginUserMutation } from '../features/api/authApi';
 
 export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
     
+    const [registerUser, registerUserRequest] = useRegisterUserMutation();
+    const [loginUser, loginUserRequest] = useLoginUserMutation();
+    
    // const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
    // const [isUserRegistering, setIsUserRegistering] = React.useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
+        
+        try {
+            const result = await registerUser({ username, password });
+            if (result.data.success) {
+                setMessage('Registering done !');
+            } else {
+                setMessage('Error during registering.');
+            }
+        } catch (error) {
+         setMessage('Query error during registering.');
+        }
+    };
+    
+    const handleLogin = async (e) => {
+        e.preventDefault();
+
+        try {
+        const result = await loginUser({ username, password });
+        if (result.data.success) {
+            setMessage('Login done !');
+        } else {
+            setMessage('Login error.');
+            }
+        } catch (error) {
+        setMessage('Login query error.');
+        }
+    };
+    
+    
+    
+    
         
         // LOGIN
         /*
@@ -69,7 +104,7 @@ export default function LoginPage() {
             setMessage('Query Error');
         }
         */
-        
+        /*
         //REGISTER
         try {
             const response = await fetch('http://localhost:3001/register', {
@@ -93,17 +128,18 @@ export default function LoginPage() {
             console.error('Fetch error:', error.message);
         }
     }
+    */
     /*
     const handleLogout = () => {
         { console.log('Disconnection Done') }
         setIsUserLoggedIn(false);
     }
     */
-
+    
     return (
         <div className="login-page">
             <h1>Profile</h1>
-               <form onSubmit={handleSubmit}>
+               <form>
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
@@ -118,7 +154,8 @@ export default function LoginPage() {
                     placeholder="Password" required
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Register</button>
+                 <button type="submit" onSubmit={handleLogin}>Login</button>
+                <button type="submit" onSubmit={handleRegister}>Register</button>
             </form>
             {message && <p>{message}</p>}
             { console.log('Username : ' + username) }

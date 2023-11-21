@@ -1,10 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const apiDiscogs = "https://api.discogs.com/database/"
-
-export const apiSlice = createApi({
-    reducerPath: "api",
-    baseQuery: fetchBaseQuery({ baseUrl: apiDiscogs }),
+export const authApi = createApi({
+    reducerPath: "authApi",
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3001/authApi" }),
     endpoints: (builder) => ({
         // All Data
         getAllData: builder.query({
@@ -16,7 +14,7 @@ export const apiSlice = createApi({
             query: ({username, password}) => ({
                url: `/user/register`,
                method: 'POST',
-               body: {username, password}
+               body: { username, password }
             }), 
         }),
         
@@ -25,7 +23,7 @@ export const apiSlice = createApi({
             query: ({username, password}) => ({
                url: `/user/login`,
                method: 'POST',
-               body: {username, password}
+               body: { username, password }
             }), 
         }),
         
@@ -39,4 +37,5 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useGetAllDataQuery } = apiSlice;
+export const { useGetAllDataQuery, useRegisterUserMutation, useLoginUserMutation, } = authApi;
+export default authApi.reducer;
