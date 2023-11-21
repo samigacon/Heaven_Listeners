@@ -24,16 +24,17 @@ function isAuthenticated(req, res, next) {
 // Routes
 const router = express.Router()
 
-router.post('/api/user/register', userController.register)
-router.post('/api/user/login', userController.login) 
-router.get('/api/user/logout', userController.logout) 
+router.post('/authApi/user/register', userController.register)
+router.post('/authApi/user/login', userController.login) 
+router.get('/authApi/user/logout', userController.logout) 
 
-
+/*
 /// Admin Routes ///
-router.get('/api/user/playlists-add', isAuthenticated, playlistsController.add)
-router.get('/api/user/playlists-delete', isAuthenticated, playlistsController.delete)
-router.get('/api/user/playlists-rename', isAuthenticated, playlistsController.rename)
-router.get('/api/user/playlists', isAuthenticated, playlistsController.modify)
+router.get('/auth/user/playlists-add', isAuthenticated, playlistsController.add)
+router.get('/auth/user/playlists-delete', isAuthenticated, playlistsController.remove)
+router.get('/auth/user/playlists-rename', isAuthenticated, playlistsController.rename)
+router.get('/auth/user/playlists', isAuthenticated, playlistsController.modify)
+*/
 
 
 module.exports.router = router;

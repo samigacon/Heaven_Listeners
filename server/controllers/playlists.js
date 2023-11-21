@@ -1,14 +1,14 @@
 const db = require('../models/database.js')
 const bcrypt = require('bcrypt')
 
-
+/*
 //function to add a playlist
 async function add (req, res) {
     
 }
 
-//function to delete a playlist
-async function delete (req, res) {
+//function to remove a playlist
+async function remove (req, res) {
     
 }
 
@@ -21,3 +21,4 @@ async function rename (req, res) {
 async function modify (req, res) {
     
 }
+*/

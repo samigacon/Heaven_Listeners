@@ -4,6 +4,8 @@ const routes = require('./routes/routes.js')
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+const { Client } = require('disconnect');
+
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
 
@@ -14,6 +16,18 @@ const app = express();
 app.use(express.json())
 app.use(express.static('public'))
 app.use('/', routes.router)
+
+
+app.get('/release/:id', (req, res) => {
+    const discogs = new Client();
+    const db = discogs.database();
+    db.getRelease(req.params.id, (err, data) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.send(data);
+    });
+});
 
 
 // Create Session
