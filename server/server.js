@@ -4,8 +4,6 @@ const routes = require('./routes/routes.js')
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
-const { Client } = require('disconnect');
-
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
 
@@ -13,21 +11,13 @@ const PORT = 3001;
 
 const app = express();
 
+const Discogs = require('disconnect').Client;
+const db = new Discogs().database();
+
+// Middlewares
 app.use(express.json())
 app.use(express.static('public'))
 app.use('/', routes.router)
-
-
-app.get('/release/:id', (req, res) => {
-    const discogs = new Client();
-    const db = discogs.database();
-    db.getRelease(req.params.id, (err, data) => {
-        if (err) {
-            return res.status(500).send(err);
-        }
-        res.send(data);
-    });
-});
 
 
 // Create Session
@@ -41,6 +31,13 @@ app.use(session({
 }));
 
 
+// Discogs
+db.getRelease(176126, function(err, data){
+	console.log(data);
+});
+
+
+// Launch
 app.listen(PORT, () => {
     console.log(`Server is launching with port ${PORT}`);
 });
