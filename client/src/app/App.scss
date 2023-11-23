@@ -10,7 +10,7 @@ $not-user-color: #999;
     margin: auto;
     height: auto;
     background-color: $primary-color;
-    width: 33%;
+    width: 95%;
     border-radius: 15px;
     box-sizing: border-box;
 }
@@ -53,6 +53,11 @@ li {
     padding: 10px;
 }
 
+a {
+    text-decoration: none;
+    list-style-type: none;
+}
+
 //Header
 header a {
     margin: 10px;
@@ -62,7 +67,7 @@ header a {
     border-radius: 15px;
 }
 
-header a:hover {
+a:hover {
     color: $selection-color;
     transition: 0.2s;
     cursor: pointer;
@@ -95,11 +100,6 @@ header a:hover {
     width: 20%;
     margin-left: 30px;
     padding: 5px;
-}
-
-.homepage a {
-    text-decoration: none;
-    list-style-type: none;
 }
 
 
@@ -199,6 +199,7 @@ header a:hover {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
+    text-decoration: none;
     background-color: $button-color;
     text-decoration: none;
     border-radius: 15px;
@@ -206,7 +207,6 @@ header a:hover {
 
 .add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover {
     color: $selection-color;
-    background-color: $selection-color;
     transition: 0.2s;
     cursor: pointer;
 }
@@ -259,7 +259,17 @@ label {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: $button-color;
     font-family: "Bebas Neue";
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid $button-color;
+}
+
+.login-page button:hover, .register-page button:hover {
+    color: $selection-color;
+    background-color: $button-color;
+    transition: 0.2s;
     cursor: pointer;
 }
 
