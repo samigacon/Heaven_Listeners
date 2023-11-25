@@ -11,15 +11,15 @@ async function register (req, res) {
     const passwordHash = await bcrypt.hash(password, saltRounds)
     
     try {
-        await db.query(`
-            INSERT INTO \`User\` (username, password)
+        await db.query(
+        `
+            INSERT INTO \`User\` (Username, Password)
             VALUES (?, ?)
         `, [username, passwordHash])
     } catch (e) {
         return res.json({success: false, message: e.toString()})
     }
     
-    // Return result
     return res.json({success: true})
 }
 
@@ -32,10 +32,11 @@ async function login (req, res) {
     console.log(password)
     
     // Get all users for this email
-    const [users] = await db.query(`
+    const [users] = await db.query(
+    `
         SELECT * 
         FROM \`User\` 
-        WHERE username = ?
+        WHERE Username = ?
     `, [username])
     
     console.log(users)
@@ -48,7 +49,6 @@ async function login (req, res) {
     // Hash user password
     const match = await bcrypt.compare(password, users[0].password)
     
-    // Return error
     return res.status(401).json({success: false})
 }
 
