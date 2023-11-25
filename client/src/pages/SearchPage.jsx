@@ -4,21 +4,17 @@ import { useSearchTracksQuery } from '../features/api/discogsApi';
     
 export default function SearchPage () {
     const [searchQuery, setSearchQuery] = React.useState('');
-    const [searchResults, setSearchResults] = React.useState([]);
     
-    const { data, error, isLoading } = useSearchTracksQuery(searchQuery);
+    const { data, isLoading } = useSearchTracksQuery(searchQuery);
     
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        try {
-              if (data && data.results) {
-                setSearchResults(data.results);
-              }
-            } catch (error) {
-              console.error('Error:', error);
-         }
+    const handleSearch = (e) => {
+        event.preventDefault();
+        console.log("Search done")
+        setSearchQuery(searchQuery);
+         console.log(searchQuery);
+         console.log(data)
     }
-
+        
     return (
         <>
             <h1>Search</h1>
@@ -33,11 +29,23 @@ export default function SearchPage () {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                    <button type="submit">Search</button>
                 </form>
             </div>
-            { console.log('searchQuery : ' + searchQuery) }
-            { console.log('searchResults : ' + searchResults) }
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <div>
+                    {data ? (
+                        <div>
+                            {data.results.map((item) => (
+                                <div key={item.id}>{item.title}</div>
+                            ))}
+                        </div>
+                    ) : (
+                        <p>No results found.</p>
+                    )}
+                </div>
+            )}
             <h2 className ="search-tag">Artists</h2>
             <div className="search-artist">
                 <div className="artists"><Link to="/artist">Artist 1</Link></div>
@@ -49,6 +57,7 @@ export default function SearchPage () {
             <h2 className ="search-tag">Albums</h2>
             <div className="search-album">
                 <div className="albums"><Link to="/album">Album 1</Link></div>
+               
             </div>
         </>
     )
