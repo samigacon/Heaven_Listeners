@@ -120,7 +120,9 @@ a:hover {
   cursor: pointer;
 }
 
-.search-artist, .search-track, .search-album {
+.search-artist, .search-tracks, .search-album {
+  display: flex;
+  overflow: scroll;
   font-family: "Bebas Neue";
   margin: auto;
   width: 75%;
@@ -128,6 +130,7 @@ a:hover {
   padding: 40px;
   background-color: #fff;
   border-radius: 15px;
+  gap: 15px;
 }
 
 .search-tag {
@@ -137,11 +140,24 @@ a:hover {
   padding: 5px;
 }
 
+.search-artist img, .search-tracks img, .search-album img {
+  max-width: 100%;
+  width: 200px;
+  height: 50px;
+}
+
 .artists, .tracks, .albums {
   background-color: #f0f0f0;
   width: 20%;
   height: 100%;
   text-align: center;
+}
+
+.tags {
+  text-align: center;
+  padding: 10px;
+  margin: 0 10px;
+  margin-top: -20px;
 }
 
 .library-history, .library-favorites {

@@ -6,12 +6,12 @@ export const discogsApi = createApi({
     reducerPath: 'discogsApi',
     baseQuery: fetchBaseQuery({ baseUrl: api }),
     endpoints: (builder) => ({
-        searchTracks: builder.query({
+        search: builder.query({
             // With Consumer and Secret Key
             query: (searchQuery) => `database/search?q=${searchQuery}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`,
         }),
     }),
 });
 
-export const { useSearchTracksQuery } = discogsApi;
+export const { useSearchQuery } = discogsApi;
 export default discogsApi.reducer;
