@@ -1,13 +1,15 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function TrackPage () {
-    
+    const { trackId } = useParams();
+   
     
     
     return (
         <>
-            <h1>Track</h1>
+            <h1>{trackId}</h1>
+            {console.log('trackId : ' + track.Id)}
         </>
     )
 }

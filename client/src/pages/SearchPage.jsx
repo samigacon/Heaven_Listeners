@@ -19,7 +19,7 @@ export default function SearchPage () {
     };
     
     const artists = data ? filterResultsByType(data.results, 'artist') : [];
-    const tracks = data ? filterResultsByType(data.results, 'track') : [];
+    const tracks = data ? filterResultsByType(data.results, 'tracklist.title') : [];
     console.log("Tracks : " + tracks)
     const releases = data ? filterResultsByType(data.results, 'release') : [];
 
@@ -54,7 +54,7 @@ export default function SearchPage () {
                                     artists.map((artist) => (
                                         <div className='tags' key={artist.id}>
                                             {artist.title.replace(/\([^)]*\)/g, '').trim()}
-                                            <img src={artist.cover_image} alt={artist.title} />
+                                            <Link to={`/artist/${artist.id}`}><img src={artist.cover_image} alt={artist.title} /></Link>
                                         </div>
                                     ))
                                 )}
@@ -82,7 +82,7 @@ export default function SearchPage () {
                                     releases.map((release) => (
                                         <div className='tags' key={release.id}>
                                             {release.title}
-                                            <img src={release.cover_image} alt={release.title} />
+                                            <Link to={`/album/${release.id}`}><img src={release.cover_image} alt={release.title} /></Link>
                                         </div>
                                     ))
                                 )}

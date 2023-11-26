@@ -30,9 +30,9 @@ export default function App() {
                     <Route path="/search" element={ <SearchPage /> } />
                     <Route path="/library" element={ <LibraryPage /> } />
                     <Route path="/login" element={ <LoginPage /> } />
-                    <Route path="/track" element={ <TrackPage /> } />
-                    <Route path="/album" element={ <AlbumPage /> } />
-                    <Route path="/artist" element={ <ArtistPage /> } />
+                    <Route path="/track/:trackId" element={ <TrackPage /> } />
+                    <Route path="/album/:releaseId" element={ <AlbumPage /> } />
+                    <Route path="/artist/:artistId" element={ <ArtistPage /> } />
                     <Route path="/favorites" element={ <FavoritesPage /> } />
                     <Route path="/history" element={ <HistoryPage /> } />
                     <Route path="/playlist" element={ <PlaylistPage /> } />
