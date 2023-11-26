@@ -18,7 +18,7 @@ import PlaylistNewPage from '../pages/PlaylistNewPage'
 import PlaylistAddPage from '../pages/PlaylistAddPage'
 import PlaylistRenamePage from '../pages/PlaylistRenamePage'
 
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 export default function App() {
     return (

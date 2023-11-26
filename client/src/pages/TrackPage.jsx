@@ -5,7 +5,6 @@ export default function TrackPage () {
     const { trackId } = useParams();
    
     
-    
     return (
         <>
             <h1>{trackId}</h1>

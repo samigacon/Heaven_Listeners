@@ -145,6 +145,7 @@ a:hover {
   max-height: 80%;
   width: 200px;
   height: 50px;
+  object-fit: cover;
 }
 
 .search-artist img:hover, .search-tracks img:hover, .search-album img:hover {
