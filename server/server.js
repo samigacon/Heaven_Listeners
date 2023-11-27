@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const routes = require('./routes/routes.js');
 const session = require('express-session');
-const config = require('./.config');
 const FileStore = require('session-file-store')(session);
 
 const axios = require('axios');
@@ -13,6 +12,8 @@ dotenv.config();
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
 
+const cors = require('cors');
+
 const PORT = 3001;
 
 const app = express();
@@ -21,18 +22,22 @@ const Discogs = require('disconnect').Client;
 const db = new Discogs().database();
 
 // Middlewares
+app.use(cors());
 app.use(express.json())
 app.use(express.static('public'))
 app.use('/', routes.router)
 
-// Discogs
+/*
+// Exemple Discogs
 db.getRelease(176126, function(err, data){
 	console.log(data);
 });
+*/
 
+// CORS
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Headers', '*')
     next();
 });
 
