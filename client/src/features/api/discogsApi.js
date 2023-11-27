@@ -10,8 +10,11 @@ export const discogsApi = createApi({
             // With Consumer and Secret Key
             query: (searchQuery) => `database/search?q=${searchQuery}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`,
         }),
+        artist: builder.query({
+            query: (searchArtist) => `artists/${searchArtist}`,
+        }),
     }),
 });
 
-export const { useSearchQuery } = discogsApi;
+export const { useSearchQuery, useArtistQuery } = discogsApi;
 export default discogsApi.reducer;

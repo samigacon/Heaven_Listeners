@@ -1,14 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { useSearchQuery } from '../features/api/discogsApi';
+import { useArtistQuery  } from '../features/api/discogsApi';
 
 export default function ArtistPage () {
     const { artistId } = useParams();
+    
+    const { data } = useArtistQuery();
 
     return (
         <>
-            <h1>{artistId}</h1>
-            {console.log('artistId : ' + artistId)}
+            <h1>{data}</h1>
+            {console.log('data : ' + data)}
         </>
     );
 }
