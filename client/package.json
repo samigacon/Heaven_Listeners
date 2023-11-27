@@ -27,5 +27,4 @@
         "sass": "^1.69.5",
         "vite": "^4.4.5"
     }
-    "proxy": "http://localhost:3001",
 }
