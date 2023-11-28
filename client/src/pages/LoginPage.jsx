@@ -66,8 +66,8 @@ export default function LoginPage() {
                 console.log('Login Done');
                 setMessage(data.message);
             } else {
-                console.log('Unrecognized username or password', response.status, response.statusText);
-                setMessage('Unrecognized username or password');
+                console.log('Unrecognized Username or Password', response.status, response.statusText);
+                setMessage('Unrecognized Username or Password');
             }
         } catch (error) {
             console.log('Login Query Error', error);
