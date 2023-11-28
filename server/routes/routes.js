@@ -5,9 +5,10 @@ const bcrypt = require('bcrypt');
 //Controllers
 const userController = require('../controllers/user.js')
 const playlistsController = require('../controllers/playlists.js')
+/*
 const favoritesController = require('../controllers/favorites.js')
 const historicController = require('../controllers/historic.js')
-
+*/
 
 // Access if Connected
 function isAuthenticated(req, res, next) {
@@ -24,9 +25,13 @@ function isAuthenticated(req, res, next) {
 // Routes
 const router = express.Router()
 
+router.get('/message', userController.hello)
+
+/*
 router.post('/authApi/user/register', userController.register)
 router.post('/authApi/user/login', userController.login) 
 router.get('/authApi/user/logout', userController.logout) 
+*/
 
 /*
 /// Admin Routes ///

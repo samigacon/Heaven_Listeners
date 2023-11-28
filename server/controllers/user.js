@@ -2,6 +2,11 @@ const db = require('../models/database.js')
 const bcrypt = require('bcrypt')
 
 
+function hello (req, res) {
+    console.log("Hello Routé !");
+    return res.json({ message: 'Hello Routé !' });
+}
+
 async function register (req, res) {
     const username = req.body.username
     const password = req.body.password
@@ -68,3 +73,4 @@ async function logout (req, res) {
 module.exports.register = register
 module.exports.login = login
 module.exports.logout = logout
+module.exports.hello = hello

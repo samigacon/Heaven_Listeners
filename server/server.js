@@ -47,10 +47,6 @@ const data = new Discogs({
 	consumerSecret: 'oRraKrTFCIotmweTGYgAaMarsdFVwIFA'
 });
 
-app.get('/message', function(req, res){
-    console.log("Bouton Cliqué !");
-    res.send({ message: 'Bouton Cliqué !' });
-});
 
 // Create Session
 app.use(session({
