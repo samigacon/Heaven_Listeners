@@ -16,7 +16,6 @@ const app = express();
 
 
 // CORS Configuration
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://samigacon.ide.3wa.io:3000');
     res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE');
@@ -25,7 +24,7 @@ app.use((req, res, next) => {
 });
 
 
-// Other Middlewares
+// Middlewares
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', routes.router);

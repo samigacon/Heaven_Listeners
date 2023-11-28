@@ -28,8 +28,6 @@ function isAuthenticated(req, res, next) {
 // Routes
 const router = express.Router();
 
-router.get('/message', userController.hello);
-
 router.post('/register', userController.register);
 router.post('/login', userController.login); 
 router.get('/logout', userController.logout);
