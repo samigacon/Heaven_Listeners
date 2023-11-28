@@ -30,9 +30,9 @@ app.use((req, res, next) => {
 
 
 // Other Middlewares
-app.use(express.json())
-app.use(express.static('public'))
-app.use('/', routes.router)
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/', routes.router);
 
 
 // Discogs

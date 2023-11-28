@@ -1,14 +1,17 @@
-const express = require("express")
+const express = require("express");
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 
+
 //Controllers
-const userController = require('../controllers/user.js')
-const playlistsController = require('../controllers/playlists.js')
+const userController = require('../controllers/user.js');
+
 /*
+const playlistsController = require('../controllers/playlists.js')
 const favoritesController = require('../controllers/favorites.js')
 const historicController = require('../controllers/historic.js')
 */
+
 
 // Access if Connected
 function isAuthenticated(req, res, next) {
@@ -23,22 +26,21 @@ function isAuthenticated(req, res, next) {
 
 
 // Routes
-const router = express.Router()
+const router = express.Router();
 
-router.get('/message', userController.hello)
+router.get('/message', userController.hello);
 
-/*
-router.post('/authApi/user/register', userController.register)
-router.post('/authApi/user/login', userController.login) 
-router.get('/authApi/user/logout', userController.logout) 
-*/
+router.post('/register', userController.register);
+router.post('/login', userController.login); 
+router.get('/logout', userController.logout);
+
 
 /*
 /// Admin Routes ///
-router.get('/auth/user/playlists-add', isAuthenticated, playlistsController.add)
-router.get('/auth/user/playlists-delete', isAuthenticated, playlistsController.remove)
-router.get('/auth/user/playlists-rename', isAuthenticated, playlistsController.rename)
-router.get('/auth/user/playlists', isAuthenticated, playlistsController.modify)
+router.get('/playlists-add', isAuthenticated, playlistsController.add)
+router.get('/playlists-delete', isAuthenticated, playlistsController.remove)
+router.get('/playlists-rename', isAuthenticated, playlistsController.rename)
+router.get('/playlists', isAuthenticated, playlistsController.modify)
 */
 
 

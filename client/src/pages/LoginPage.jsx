@@ -6,57 +6,69 @@ export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
+    const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
     
-    const [registerUser, registerUserRequest] = useRegisterUserMutation();
-    const [loginUser, loginUserRequest] = useLoginUserMutation();
-    
-   // const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
-   // const [isUserRegistering, setIsUserRegistering] = React.useState(false);
+    /*
+    if (isUserLoggedIn) {
+        setMessage('Already connected!');
+        return;
+    }
+    */
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        
+    const handleRegister = async () => {
         try {
-            const result = await registerUser({ username, password });
-            if (result.data.success) {
-                setMessage('Registering done !');
+            const response = await fetch('http://samigacon.ide.3wa.io:3001/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Authentication Done');
+                setMessage(data.message);
             } else {
-                setMessage('Error during registering.');
+                console.log('Authentication Error');
+                setMessage('Authentication Error');
             }
         } catch (error) {
-         setMessage('Query error during registering.');
+             console.log('Register Query Error');
+            setMessage('Register Query Error');
         }
-    };
-    
-    const handleLogin = async (e) => {
-        e.preventDefault();
+    }
 
+    const handleLogin = async () => {
         try {
-        const result = await loginUser({ username, password });
-        if (result.data.success) {
-            setMessage('Login done !');
-        } else {
-            setMessage('Login error.');
+            const response = await fetch('http://samigacon.ide.3wa.io:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setIsUserLoggedIn(true);
+                console.log('Login Done');
+                setMessage(data.message);
+            } else {
+                console.log('Login Error');
+                setMessage('Login Error');
             }
         } catch (error) {
-        setMessage('Login query error.');
+            console.log('Login Query Error');
+            setMessage('Login Query Error.');
         }
-    };
-    
-    
-    
-    
-        
-        // LOGIN
-        /*
-        if (isUserLoggedIn) {
-            { console.log('Already connected') }
-            setMessage('Already connected!');
-            return;
-        }
-        */
-        
-         /*
+    }
+     
+    /*
         const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{3,20}$/;
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     
@@ -77,57 +89,6 @@ export default function LoginPage() {
                 return;
              }
         }
-        */
-        /*
-        try {
-            const response = await fetch('http://localhost:3001/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                }),
-            });
-            if (response.ok) {
-                const data = await response.json();
-                { console.log('Connection Done') }
-                setIsUserLoggedIn(true);
-                setMessage(data.message);
-            } else {
-                { console.log('Authentication Error') }
-                setMessage('Authentication Error');
-            }
-        } catch (error) {
-             { console.log('Query Error') }
-            setMessage('Query Error');
-        }
-        */
-        /*
-        //REGISTER
-        try {
-            const response = await fetch('http://localhost:3001/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                }),
-            });
-    
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-    
-            const data = await response.json();
-            console.log(data);
-        } catch (error) {
-            console.error('Fetch error:', error.message);
-        }
-    }
     */
     /*
     const handleLogout = () => {
@@ -135,31 +96,34 @@ export default function LoginPage() {
         setIsUserLoggedIn(false);
     }
     */
-    
+
     return (
         <div className="login-page">
             <h1>Profile</h1>
-               <form>
+            <form>
                 <label htmlFor="username">Username</label>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username" required
-                    onChange={(e) => setUsername(e.target.value)}
-                />
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        required
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
                 <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password" required
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                 <button type="submit" onSubmit={handleLogin}>Login</button>
-                <button type="submit" onSubmit={handleRegister}>Register</button>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                <button type="button" onClick={handleLogin}>Login</button>
+                <button type="button" onClick={handleRegister}>Register</button>
             </form>
             {message && <p>{message}</p>}
             { console.log('Username : ' + username) }
             { console.log('Password : ' + password) }
+            { console.log('isUserLoggedIn: ' + isUserLoggedIn) }
         </div>
     )
 }
