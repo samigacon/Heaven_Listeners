@@ -1,19 +1,11 @@
 import React from 'react';
 
-import { useRegisterUserMutation, useLoginUserMutation } from '../features/api/authApi';
-
 export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
     const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
-    
-    /*
-    if (isUserLoggedIn) {
-        setMessage('Already connected!');
-        return;
-    }
-    */
+
 
     const handleRegister = async () => {
         try {
@@ -32,16 +24,20 @@ export default function LoginPage() {
                 console.log('Authentication Done');
                 setMessage(data.message);
             } else {
-                console.log('Authentication Error');
+                console.log('Authentication Error', response.status, response.statusText);
                 setMessage('Authentication Error');
             }
         } catch (error) {
-             console.log('Register Query Error');
+             console.log('Register Query Error', error);
             setMessage('Register Query Error');
         }
     }
 
     const handleLogin = async () => {
+        if (isUserLoggedIn) {
+            setMessage('Already connected!');
+            return;
+        }
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/login', {
                 method: 'POST',
@@ -59,11 +55,11 @@ export default function LoginPage() {
                 console.log('Login Done');
                 setMessage(data.message);
             } else {
-                console.log('Login Error');
+                console.log('Login Error', response.status, response.statusText);
                 setMessage('Login Error');
             }
         } catch (error) {
-            console.log('Login Query Error');
+            console.log('Login Query Error', error);
             setMessage('Login Query Error.');
         }
     }
@@ -90,39 +86,47 @@ export default function LoginPage() {
              }
         }
     */
-    /*
+
     const handleLogout = () => {
         { console.log('Disconnection Done') }
         setIsUserLoggedIn(false);
     }
-    */
+
 
     return (
         <div className="login-page">
             <h1>Profile</h1>
-            <form>
-                <label htmlFor="username">Username</label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        required
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        required
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                <button type="button" onClick={handleLogin}>Login</button>
-                <button type="button" onClick={handleRegister}>Register</button>
-            </form>
+            {isUserLoggedIn ? (
+                <div>
+                    <h2>Welcome to Heaven Listeners, {username}!</h2>
+                    <button type="button" onClick={handleLogout}>Logout</button>
+                </div>
+            ) : (
+                <form>
+                    <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            required
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    <button type="button" onClick={handleLogin}>Login</button>
+                    <button type="button" onClick={handleRegister}>Register</button>
+                </form>
+            )}
             {message && <p>{message}</p>}
             { console.log('Username : ' + username) }
             { console.log('Password : ' + password) }
+            { console.log('Message : ' + message) }
             { console.log('isUserLoggedIn: ' + isUserLoggedIn) }
         </div>
     )

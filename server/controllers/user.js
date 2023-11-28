@@ -37,39 +37,48 @@ async function login (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     
-    const [users] = await db.query(
-    `
-        SELECT * 
-        FROM \`User\` 
-        WHERE Username = ?
-    `, [username])
+    try {
+        const [users] = await db.query(
+        `
+            SELECT * 
+            FROM \`User\` 
+            WHERE Username = ?
+        `, [username]);
     
-    console.log(users);
+        console.log(users);
     
-    if (users.length == 0) {
-        return res.status(401).json({success: false});
-       
-    }
+        if (users.length == 0) {
+            return res.status(401).json({success: false});
+        }
     
-    // Password match
-    const match = await bcrypt.compare(password, users[0].password);
-    console.log(match);
-    if (match) {
-        return res.status(200).json({ success: true });
-    } else {
-        return res.status(401).json({ success: false });
+        // Hashed Password Match
+        const hashedPassword = users[0].Password;
+        console.log(hashedPassword);
+        const match = await bcrypt.compare(password, hashedPassword);
+        console.log(match);
+        if (match) {
+            console.log('Login Successful');
+            return res.status(200).json({ success: true, message: 'Login Successful' });
+        } else {
+            console.log('Login Failed');
+            return res.status(401).json({ success: false, message: 'Login Failed' });
+        }
+    } catch (e) {
+        console.error(e);
+        console.log('Login Error');
+        return res.status(500).json({ success: false, message: 'Login Error' });
     }
 }
 
 
 async function logout (req, res) {
-    req.session.destroy((err) =>{
+    req.session.destroy((err) => {
         if (err) {
-            console.log('Error: Impossible to end the session')
-            return res.status(500).json({'Error': 'Impossible to end the session',})
+            console.log('Error: Impossible to end the session');
+            return res.status(500).json({ success: false, message: 'Impossible to end the session' });
         }
-        console.log('End of ession')
-		return res.json({'message': 'End of session'})
+        console.log('End of session');
+		return res.json({ message: 'End of session'});
 	})
 }
 

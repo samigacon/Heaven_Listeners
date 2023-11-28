@@ -10,20 +10,16 @@ const axios = require('axios');
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
 
-const cors = require('cors');
-
 const PORT = 3001;
 
 const app = express();
 
 
 // CORS Configuration
-app.use(cors({
-    origin: 'http://samigacon.ide.3wa.io:3000' 
-}));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://samigacon.ide.3wa.io:3000');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE');
     res.header('Access-Control-Allow-Headers', '*');
     next();
 });
