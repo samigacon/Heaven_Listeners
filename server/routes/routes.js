@@ -3,7 +3,7 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 
 
-//Controllers
+// Controllers
 const userController = require('../controllers/user.js');
 
 /*
@@ -13,6 +13,7 @@ const historicController = require('../controllers/historic.js')
 */
 
 
+/*
 // Access if Connected
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.connected) {
@@ -23,7 +24,7 @@ function isAuthenticated(req, res, next) {
         return res.status(401).json({error: '401 Unauthorized'});
     }
 }
-
+*/
 
 // Routes
 const router = express.Router();
@@ -34,7 +35,7 @@ router.get('/logout', userController.logout);
 
 
 /*
-/// Admin Routes ///
+// Admin Routes
 router.get('/playlists-add', isAuthenticated, playlistsController.add)
 router.get('/playlists-delete', isAuthenticated, playlistsController.remove)
 router.get('/playlists-rename', isAuthenticated, playlistsController.rename)

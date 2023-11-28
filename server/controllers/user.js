@@ -39,7 +39,7 @@ async function login (req, res) {
             WHERE Username = ?
         `, [username]);
     
-        console.log(users);
+        console.log("users : " + users);
     
         if (users.length == 0) {
             return res.status(401).json({success: false});
@@ -47,12 +47,18 @@ async function login (req, res) {
     
         // Hashed Password Match
         const hashedPassword = users[0].Password;
-        console.log(hashedPassword);
+        console.log("hashedPassword : " + hashedPassword);
         const match = await bcrypt.compare(password, hashedPassword);
-        console.log(match);
+        console.log("Match: " + match);
         if (match) {
+            /*
+            // Store Session
+            req.session.connected = true;
+            req.session.user = users[0];
+            */
             console.log('Login Successful');
-            return res.status(200).json({ success: true, message: 'Login Successful' });
+            return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
+            
         } else {
             console.log('Login Failed');
             return res.status(401).json({ success: false, message: 'Login Failed' });

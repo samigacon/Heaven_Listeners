@@ -5,10 +5,13 @@ const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+/*
 const axios = require('axios');
+*/
 
 const crypto = require('crypto');
-const secret = crypto.randomBytes(64).toString('hex');
+const secretKey = "testKey";
+console.log('Clé secrète générée :', secretKey);
 
 const PORT = 3001;
 
@@ -30,6 +33,20 @@ app.use(express.static('public'));
 app.use('/', routes.router);
 
 
+// User Session
+app.use(session({
+    store: new FileStore({
+        path: './.sessions',
+    }),
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 },
+}));
+
+
+
+
 // Discogs
 const Discogs = require('disconnect').Client;
 const db = new Discogs().database();
@@ -41,17 +58,6 @@ const data = new Discogs({
 	consumerKey: 'kzwaXswmrokVpsgrxEdm', 
 	consumerSecret: 'oRraKrTFCIotmweTGYgAaMarsdFVwIFA'
 });
-
-
-// Create Session
-app.use(session({
-    store: new FileStore({
-        path: './.sessions',
-    }),
-    secret: secret,
-    resave: false,
-    saveUninitialized: true
-}));
 
 
 /*
