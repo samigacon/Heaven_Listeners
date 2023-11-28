@@ -6,8 +6,22 @@ export default function LoginPage() {
     const [message, setMessage] = React.useState('');
     const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
 
+    // Regex Inscription and Unrecognized User
+    const usernameRegex = /^(?=.*[a-zA-Z\d]).{3,20}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,}$/;
 
+    // Register
     const handleRegister = async () => {
+        if (!username.match(usernameRegex)) {
+            setMessage('Username must contain between 3 and 20 alphanumeric characters.');
+            return;
+        }
+        
+        if (!password.match(passwordRegex)) {
+            setMessage('Password must be at least 8 characters long with at least one uppercase letter, one lowercase letter, one digit, and one special character.');
+            return;
+        }
+        
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/register', {
                 method: 'POST',
@@ -33,11 +47,8 @@ export default function LoginPage() {
         }
     }
 
+    // Login
     const handleLogin = async () => {
-        if (isUserLoggedIn) {
-            setMessage('Already connected!');
-            return;
-        }
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/login', {
                 method: 'POST',
@@ -55,38 +66,16 @@ export default function LoginPage() {
                 console.log('Login Done');
                 setMessage(data.message);
             } else {
-                console.log('Login Error', response.status, response.statusText);
-                setMessage('Login Error');
+                console.log('Unrecognized username or password', response.status, response.statusText);
+                setMessage('Unrecognized username or password');
             }
         } catch (error) {
             console.log('Login Query Error', error);
             setMessage('Login Query Error.');
         }
     }
-     
-    /*
-        const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{3,20}$/;
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-    
-        // Regex Inscription or Unrecognized Mode
-        if (isUserRegistering) {
-            if (!username.match(usernameRegex)) {
-                setMessage('Username must contain between 3 and 20 alphanumeric characters.');
-                return;
-            }
-        
-            if (!password.match(passwordRegex)) {
-                setMessage('Password must be at least 8 characters long with at least one uppercase letter, one lowercase letter, and one digit.');
-                return;
-            }
-        } else {
-            if (!username.match(usernameRegex) || !password.match(passwordRegex)) {
-                setMessage('Unrecognized username or password.');
-                return;
-             }
-        }
-    */
 
+    // Logout
     const handleLogout = () => {
         { console.log('Disconnection Done') }
         setIsUserLoggedIn(false);
