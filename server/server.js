@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = require('./routes/routes.js');
-
 const path = require('path');
+
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
@@ -10,7 +10,7 @@ const axios = require('axios');
 */
 
 const crypto = require('crypto');
-const secretKey = "testKey";
+const secretKey = "testKey-JFEOJFOPJZE0FDHOHFJHOQHVCOISDHFOIZHVOIHDVHSODIHVDSOIVODHSI";
 console.log('Clé secrète générée :', secretKey);
 
 const PORT = 3001;
@@ -27,12 +27,6 @@ app.use((req, res, next) => {
 });
 
 
-// Middlewares
-app.use(express.json());
-app.use(express.static('public'));
-app.use('/', routes.router);
-
-
 // User Session
 app.use(session({
     store: new FileStore({
@@ -45,6 +39,10 @@ app.use(session({
 }));
 
 
+// Middlewares
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/', routes.router);
 
 
 // Discogs

@@ -9,6 +9,7 @@ async function register (req, res) {
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
     
+    // Registering
     try {
         await db.query(
             `
@@ -28,6 +29,7 @@ async function register (req, res) {
 
 
 async function login (req, res) {
+    console.log('req.session: ', req.session);
     const username = req.body.username;
     const password = req.body.password;
     
@@ -47,16 +49,15 @@ async function login (req, res) {
     
         // Hashed Password Match
         const hashedPassword = users[0].Password;
-        console.log("hashedPassword : " + hashedPassword);
+        console.log('hashedPassword : ' + hashedPassword);
         const match = await bcrypt.compare(password, hashedPassword);
-        console.log("Match: " + match);
+        console.log('Match: ' + match);
         if (match) {
-            /*
-            // Store Session
-            req.session.connected = true;
+            // Store Sessions
             req.session.user = users[0];
-            */
-            console.log('Login Successful');
+            console.log('req.session.user : ' + req.session.user);
+            req.session.connected = true;
+            console.log('req.session.connected : ' + req.session.connected);
             return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
             
         } else {

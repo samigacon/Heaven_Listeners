@@ -4,7 +4,23 @@ export default function LoginPage() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
-    const [isUserLoggedIn, setIsUserLoggedIn] = React.useState(false);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    
+    // Keep Session if Connected
+    React.useEffect(() => {
+        // Initialize Cookie Session and Username
+        if (localStorage.getItem('userConnected') === null) {
+            localStorage.setItem('userConnected', 'false');
+        }
+        
+        const localUserConnected = localStorage.getItem('userConnected');
+
+        if (localUserConnected === 'true') {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
 
     // Regex Inscription and Unrecognized User
     const usernameRegex = /^(?=.*[a-zA-Z\d]).{3,20}$/;
@@ -34,9 +50,9 @@ export default function LoginPage() {
                 }),
             });
             if (response.ok) {
-                const data = await response.json();
-                console.log('Authentication Done');
-                setMessage(data.message);
+                setMessage('Authentication Done');
+                console.log('Message : ' + message);
+                
             } else {
                 console.log('Authentication Error', response.status, response.statusText);
                 setMessage('Authentication Error');
@@ -61,10 +77,11 @@ export default function LoginPage() {
                 }),
             });
             if (response.ok) {
-                const data = await response.json();
-                setIsUserLoggedIn(true);
+                setIsLoggedIn(true);
+                setUsername(username);
+                localStorage.setItem('userConnected', 'true'); // Cookie Session Connected
                 console.log('Login Done');
-                setMessage(data.message);
+                setMessage('Login Done');
             } else {
                 console.log('Login Error', response.status, response.statusText);
                 setMessage('Login Error');
@@ -77,17 +94,18 @@ export default function LoginPage() {
 
     // Logout
     const handleLogout = () => {
-        { console.log('Disconnection Done') }
-        setIsUserLoggedIn(false);
+        setMessage('Disconnection Done');
+        console.log('Message : ' + message);
+        localStorage.setItem('userConnected', 'false'); // Cookie Logout
+        setIsLoggedIn(false);
     }
-
 
     return (
         <div className="login-page">
             <h1>Profile</h1>
-            {isUserLoggedIn ? (
+            { isLoggedIn ? (
                 <div>
-                    <h2>Welcome to Heaven Listeners, {username}!</h2>
+                    <h2>Welcome to Heaven Listeners !</h2>
                     <button type="button" onClick={handleLogout}>Logout</button>
                 </div>
             ) : (
@@ -113,10 +131,6 @@ export default function LoginPage() {
                 </form>
             )}
             {message && <p>{message}</p>}
-            { console.log('Username : ' + username) }
-            { console.log('Password : ' + password) }
-            { console.log('Message : ' + message) }
-            { console.log('isUserLoggedIn: ' + isUserLoggedIn) }
         </div>
     )
 }
