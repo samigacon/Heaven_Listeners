@@ -5,7 +5,7 @@ async function register (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     
-    // Hash user password
+    // Hash Password
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
     
@@ -52,7 +52,7 @@ async function login (req, res) {
         const match = await bcrypt.compare(password, hashedPassword);
         console.log('Match: ' + match);
         if (match) {
-            // Store Sessions
+            // Store Session
             req.session.user = users[0];
             console.log('req.session.user : ' + JSON.stringify(req.session.user));
             req.session.connected = true;

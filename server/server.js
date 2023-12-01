@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use(session({
     store: new FileStore({
         path: './.sessions',
-        ttl: 2* 24 * 60 * 60 * 1000, // 2 Days Before Cleaning Unused Sessions
+        ttl: 2 * 24 * 60 * 60 * 1000, // 2 Days Before Cleaning Unused Sessions
     }),
     secret: secretKey,
     resave: false,
