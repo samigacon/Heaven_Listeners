@@ -14,22 +14,19 @@ This is my last 3WA project, a music library.
 ### If you are using another IDE, with 2 command terminals :
 
 * Front terminal :
-    `cd client`
+    `cd heaven_listeners/client`
     `npm run dev`
     
 * Back terminal : 
-    `cd server`
+    `cd heaven_listeners/server`
     `npm start`
     
-## You can find in the data folder :
-    - database.sql
-    - MCD and MPD schemas
+## You can find in the data folder: database.sql, MCD and MPD schemas
+    `cd heaven_listeners/data`
     
-## Disconnect - How I Connect my Application with Discogs API
+## Disconnect - How I connect my application with Discogs API
 
  `disconnect` is a [Node.js](http://www.nodejs.org) client library that connects with the [Discogs.com API v2.0](http://www.discogs.com/developers/).
-
-[![Dependency Status](https://david-dm.org/bartve/disconnect.png)](https://david-dm.org/bartve/disconnect)
 
 All information here: https://github.com/bartve/disconnect/tree/master
 
