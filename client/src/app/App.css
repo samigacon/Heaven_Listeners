@@ -7,12 +7,22 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  background-color: yellow;
+  color: #000;
+}
+
+.login-page button:focus {
+  background-color: yellow;
+}
+
 @font-face {
   font-family: "Bebas Neue";
   src: url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 h1, h2, h3, p, ul, li, a {
   font-family: "Bebas Neue";
+  font-weight: normal;
   text-align: center;
 }
 
@@ -40,21 +50,22 @@ li {
   padding: 10px;
 }
 
-a {
-  text-decoration: none;
-  list-style-type: none;
-}
-
 header a {
   margin: 10px;
   text-decoration: none;
   color: #000;
-  background-color: #1e90ff;
+  background-color: #1E90FF;
   border-radius: 15px;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+  list-style-type: none;
+}
+
 a:hover {
-  color: #fff;
+  color: #FFF;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -75,7 +86,7 @@ a:hover {
   width: 75%;
   height: 50px;
   padding: 40px;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 15px;
 }
 
@@ -107,15 +118,12 @@ a:hover {
   border: 1px solid;
   margin-top: 10px;
   padding: 5px;
-  background-color: #fff;
+  background-color: #FFF;
 }
 
 .search-bar button:hover {
-  font-family: "Bebas Neue";
-  border-radius: 5px;
-  border: 1px solid;
-  color: #fff;
-  background-color: #1e90ff;
+  color: #FFF;
+  background-color: #1E90FF;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -128,7 +136,7 @@ a:hover {
   width: 75%;
   height: 50px;
   padding: 40px;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 15px;
   gap: 15px;
 }
@@ -183,6 +191,8 @@ a:hover {
   width: 75%;
   height: 10%;
   border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .library-playlists {
@@ -191,10 +201,12 @@ a:hover {
   margin: auto;
   margin-bottom: 20px;
   padding: 10px 40px 40px 40px;
-  background-color: #fff;
+  background-color: #FFF;
   text-align: center;
   width: 75%;
   border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .add-playlist, .delete-playlist, .rename-playlist {
@@ -202,18 +214,20 @@ a:hover {
   margin: auto;
   font-family: "Bebas Neue";
   border-radius: 5px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #1E90FF;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px;
   text-decoration: none;
-  background-color: #1e90ff;
+  background-color: #1E90FF;
   text-decoration: none;
   border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover {
-  color: #fff;
+  color: #FFF;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -229,11 +243,13 @@ a:hover {
   border-radius: 5px;
   cursor: pointer;
   border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .library-list:hover {
-  color: #fff;
-  background-color: #1e90ff;
+  color: #FFF;
+  background-color: #1E90FF;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -264,16 +280,16 @@ label {
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: #1e90ff;
+  background-color: #1E90FF;
   font-family: "Bebas Neue";
   cursor: pointer;
   border-radius: 5px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #1E90FF;
 }
 
 .login-page button:hover, .register-page button:hover {
-  color: #fff;
-  background-color: #1e90ff;
+  color: #FFF;
+  background-color: #1E90FF;
   transition: 0.2s;
   cursor: pointer;
 }
@@ -283,7 +299,7 @@ footer {
 }
 
 /*
-//Responsive
+// Responsive
 @media (min-width: 768px) and (max-width: 1280px) {
     .container {
         width: 50%;

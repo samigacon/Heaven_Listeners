@@ -104,7 +104,7 @@ export default function LoginPage() {
                 }),
             });
             if (response.ok) {
-                setMessage('Disconnection Done');
+                setMessage('Logout Done');
                 console.log('Message : ' + message);
                 localStorage.setItem('userConnected', 'false');
                 setIsLoggedIn(false);
