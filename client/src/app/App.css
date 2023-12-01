@@ -1,7 +1,7 @@
 .container {
   margin: auto;
   height: auto;
-  background-color: #f0f0f0;
+  background-color: #FBE5CF;
   width: 95%;
   border-radius: 15px;
   box-sizing: border-box;
@@ -156,7 +156,7 @@ a:hover {
 }
 
 .artists, .tracks, .albums {
-  background-color: #f0f0f0;
+  background-color: #FBE5CF;
   width: 20%;
   height: 100%;
   text-align: center;
@@ -222,7 +222,7 @@ a:hover {
   font-family: "Bebas Neue";
   display: block;
   margin: auto;
-  background-color: #f0f0f0;
+  background-color: #FBE5CF;
   width: 75%;
   padding: 10px;
   margin-bottom: 10px;

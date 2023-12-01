@@ -6,15 +6,13 @@ export default function LoginPage() {
     const [message, setMessage] = React.useState('');
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     
-    // Keep Session if Connected
     React.useEffect(() => {
-        // Initialize Cookie Session and Username
+        // Initialize Session
         if (localStorage.getItem('userConnected') === null) {
             localStorage.setItem('userConnected', 'false');
         }
-        
+        // Keep Session if Connected
         const localUserConnected = localStorage.getItem('userConnected');
-
         if (localUserConnected === 'true') {
             setIsLoggedIn(true);
         } else {
@@ -79,7 +77,7 @@ export default function LoginPage() {
             if (response.ok) {
                 setIsLoggedIn(true);
                 setUsername(username);
-                localStorage.setItem('userConnected', 'true'); // Cookie Session Connected
+                localStorage.setItem('userConnected', 'true');
                 console.log('Login Done');
                 setMessage('Login Done');
             } else {
@@ -108,7 +106,7 @@ export default function LoginPage() {
             if (response.ok) {
                 setMessage('Disconnection Done');
                 console.log('Message : ' + message);
-                localStorage.setItem('userConnected', 'false'); // Cookie Logout
+                localStorage.setItem('userConnected', 'false');
                 setIsLoggedIn(false);
             } else {
                 console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
