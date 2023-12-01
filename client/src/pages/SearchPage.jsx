@@ -10,7 +10,6 @@ export default function SearchPage () {
     const handleSearch = (e) => {
         event.preventDefault();
         setSearchQuery(searchQuery);
-     
     }
     
     // Filter results by type (artist, track, album)
@@ -19,7 +18,7 @@ export default function SearchPage () {
     };
     
     const artists = data ? filterResultsByType(data.results, 'artist') : [];
-    const tracks = data ? filterResultsByType(data.results, 'tracklist.title') : [];
+    const tracks = data ? filterResultsByType(data.results, 'artist') : [];
     console.log("Tracks : " + tracks)
     const releases = data ? filterResultsByType(data.results, 'release') : [];
 
@@ -49,7 +48,7 @@ export default function SearchPage () {
                             <h2 className="search-tag">Artists</h2>
                             <div className="search-artist">
                                 {artists.length === 0 ? (
-                                    <p>No artists found.</p>
+                                    <p>No artist found.</p>
                                 ) : (
                                     artists.map((artist) => (
                                         <div className='tags' key={artist.id}>
@@ -58,17 +57,23 @@ export default function SearchPage () {
                                         </div>
                                     ))
                                 )}
-                        </div>
-
+                            </div>
                         </>
                     </div>
                     <div>
                         <>
                             <h2 className="search-tag">Tracks</h2>
                             <div className="search-tracks">
-                                {tracks.map((track) => (
-                                    <div className='tags' key={track.id}>{track.title}</div>
-                                ))}
+                                {artists.length === 0 ? (
+                                    <p>No track found.</p>
+                                ) : (
+                                    artists.map((artist) => (
+                                        <div className='tags' key={artist.id}>
+                                            {artist.title.replace(/\([^)]*\)/g, '').trim()}
+                                            <Link to={`/artist/${artist.id}`}><img src={artist.cover_image} alt={artist.title} /></Link>
+                                        </div>
+                                    ))
+                                )}
                             </div>
                         </>
                     </div>
