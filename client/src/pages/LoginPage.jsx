@@ -83,7 +83,7 @@ export default function LoginPage() {
                 console.log('Login Done');
                 setMessage('Login Done');
             } else {
-                console.log('Login Error', response.status, response.statusText);
+                console.log('Login Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Login Error');
             }
         } catch (error) {
@@ -93,11 +93,31 @@ export default function LoginPage() {
     }
 
     // Logout
-    const handleLogout = () => {
-        setMessage('Disconnection Done');
-        console.log('Message : ' + message);
-        localStorage.setItem('userConnected', 'false'); // Cookie Logout
-        setIsLoggedIn(false);
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('http://samigacon.ide.3wa.io:3001/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            });
+            if (response.ok) {
+                setMessage('Disconnection Done');
+                console.log('Message : ' + message);
+                localStorage.setItem('userConnected', 'false'); // Cookie Logout
+                setIsLoggedIn(false);
+            } else {
+                console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
+                setMessage('Logout Error');
+            }
+        } catch (error) {
+            console.log('Logout Query Error', error);
+            setMessage('Logout Query Error.');
+        }
     }
 
     return (

@@ -27,7 +27,6 @@ async function register (req, res) {
     }
 }
 
-
 async function login (req, res) {
     console.log('req.session: ', req.session);
     const username = req.body.username;
@@ -41,7 +40,7 @@ async function login (req, res) {
             WHERE Username = ?
         `, [username]);
     
-        console.log("users : " + users);
+        console.log("users : " + JSON.stringify(users));
     
         if (users.length == 0) {
             return res.status(401).json({success: false});
@@ -55,7 +54,7 @@ async function login (req, res) {
         if (match) {
             // Store Sessions
             req.session.user = users[0];
-            console.log('req.session.user : ' + req.session.user);
+            console.log('req.session.user : ' + JSON.stringify(req.session.user));
             req.session.connected = true;
             console.log('req.session.connected : ' + req.session.connected);
             return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
@@ -70,7 +69,6 @@ async function login (req, res) {
         return res.status(500).json({ success: false, message: 'Login Error' });
     }
 }
-
 
 async function logout (req, res) {
     req.session.destroy((err) => {
