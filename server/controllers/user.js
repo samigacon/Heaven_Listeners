@@ -52,11 +52,9 @@ async function login (req, res) {
         const match = await bcrypt.compare(password, hashedPassword);
         console.log('Match: ' + match);
         if (match) {
-            // Store Session
+            // Store User Session
             req.session.user = users[0];
-            console.log('req.session.user : ' + JSON.stringify(req.session.user));
             req.session.connected = true;
-            console.log('req.session.connected : ' + req.session.connected);
             return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
             
         } else {

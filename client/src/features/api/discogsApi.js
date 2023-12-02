@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const localForApi = 'http://samigacon.ide.3wa.io:3001';
+const api = 'https://api.discogs.com'
 
 export const discogsApi = createApi({
     reducerPath: 'discogsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: localForApi }),
+    baseQuery: fetchBaseQuery({ baseUrl: api }),
     endpoints: (builder) => ({
         search: builder.query({
-            query: (searchQuery) => `/api/discogs/database/search?q=${searchQuery}`,
+            // With Consumer and Secret Key
+            query: (searchQuery) => `database/search?q=${searchQuery}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`,
         }),
         artist: builder.query({
             query: (artistId) => `/api/discogs/artists/${artistId}`,

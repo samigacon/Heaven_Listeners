@@ -19,7 +19,7 @@ export default function SearchPage () {
     
     const artists = data ? filterResultsByType(data.results, 'artist') : [];
     const tracks = data ? filterResultsByType(data.results, 'artist') : [];
-    console.log("Tracks : " + tracks)
+    console.log("Tracks : " + JSON.stringify(tracks));
     const releases = data ? filterResultsByType(data.results, 'release') : [];
 
     

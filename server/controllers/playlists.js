@@ -1,24 +1,29 @@
 const db = require('../models/database.js')
 const bcrypt = require('bcrypt')
 
-/*
-//function to add a playlist
-async function add (req, res) {
-    
+async function addPlaylist(req, res) {
+
 }
 
-//function to remove a playlist
-async function remove (req, res) {
-    
+async function removePlaylist(req, res) {
+
 }
 
-//function to rename a playlist
-async function rename (req, res) {
-    
+async function renamePlaylist(req, res) {
+    try {
+        const playlistId = req.params.playlistId;
+        const newName = req.body.name;
+
+        const query = 'UPDATE Playlist SET Name = ? WHERE Playlist_ID = ?';
+        const values = [newName, playlistId];
+
+        await db.query(query, values);
+
+        res.json({ message: 'Playlist Renamed with Success' });
+    } catch (error) {
+        console.error('Playlist Renaming Error :', error);
+        res.status(500).json({ error: 'Playlist Renaming Error' });
+    }
 }
 
-//function to modify a playlist
-async function modify (req, res) {
-    
-}
-*/
+module.exports.renamePlaylist = renamePlaylist;

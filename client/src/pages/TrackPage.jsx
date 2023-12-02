@@ -9,6 +9,7 @@ export default function TrackPage () {
         <>
             <h1>{trackId}</h1>
             {console.log('trackId : ' + track.Id)}
+            <button className="add-playlist"><Link to="/library">Add to Playlist</Link></button>
         </>
     )
 }

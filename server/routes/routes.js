@@ -2,16 +2,14 @@ const express = require("express");
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 
-
 // Controllers
 const userController = require('../controllers/user.js');
+const playlistsController = require('../controllers/playlists.js')
 
 /*
-const playlistsController = require('../controllers/playlists.js')
 const favoritesController = require('../controllers/favorites.js')
 const historicController = require('../controllers/historic.js')
 */
-
 
 /*
 // Access if Connected
@@ -33,14 +31,11 @@ router.post('/register', userController.register);
 router.post('/login', userController.login); 
 router.post('/logout', userController.logout);
 
-
-/*
-// Admin Routes
-router.get('/playlists-add', isAuthenticated, playlistsController.add)
-router.get('/playlists-delete', isAuthenticated, playlistsController.remove)
-router.get('/playlists-rename', isAuthenticated, playlistsController.rename)
-router.get('/playlists', isAuthenticated, playlistsController.modify)
-*/
+router.get('/playlists-add', playlistsController.addPlaylist)
+router.get('/playlists-delete', playlistsController.removePlaylist)
+router.get('/playlists-rename', playlistsController.renamePlaylist)
+router.get('/track-add', playlistsController.addTrackToPlaylist)
+router.get('/track-delete', playlistsController.removeTrackFromPlaylist)
 
 
 module.exports.router = router;

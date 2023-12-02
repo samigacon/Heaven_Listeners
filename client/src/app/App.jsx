@@ -33,12 +33,15 @@ export default function App() {
                     <Route path="/track/:trackId" element={ <TrackPage /> } />
                     <Route path="/album/:releaseId" element={ <AlbumPage /> } />
                     <Route path="/artist/:artistId" element={ <ArtistPage /> } />
-                    <Route path="/favorites" element={ <FavoritesPage /> } />
-                    <Route path="/history" element={ <HistoryPage /> } />
+                   {/* <Route path="/favorites" element={ <FavoritesPage /> } />*/}
+                   {/* <Route path="/history" element={ <HistoryPage /> } />*/}
                     <Route path="/playlist" element={ <PlaylistPage /> } />
                     <Route path="/playlist-new" element={ <PlaylistNewPage /> } />
                     <Route path="/playlist-add" element={ <PlaylistAddPage /> } />
                     <Route path="/playlist-rename" element={ <PlaylistRenamePage /> } />
+                    <Route path="/playlist-delete" element={<DeletePlaylistPage />} />
+                    <Route path="/track-add" element={<AddTrackToPlaylistPage />} />
+                    <Route path="/track-delete" element={<RemoveTrackFromPlaylistPage />} />
                     <Route path="*" element={ <Error404 /> } />
                 </Routes>
                 <Footer />
