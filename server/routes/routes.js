@@ -7,11 +7,6 @@ const userController = require('../controllers/user.js');
 const playlistsController = require('../controllers/playlists.js')
 
 /*
-const favoritesController = require('../controllers/favorites.js')
-const historicController = require('../controllers/historic.js')
-*/
-
-/*
 // Access if Connected
 function isAuthenticated(req, res, next) {
     if (req.session && req.session.connected) {

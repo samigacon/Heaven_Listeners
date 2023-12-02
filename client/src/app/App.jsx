@@ -33,8 +33,6 @@ export default function App() {
                     <Route path="/track/:trackId" element={ <TrackPage /> } />
                     <Route path="/album/:releaseId" element={ <AlbumPage /> } />
                     <Route path="/artist/:artistId" element={ <ArtistPage /> } />
-                   {/* <Route path="/favorites" element={ <FavoritesPage /> } />*/}
-                   {/* <Route path="/history" element={ <HistoryPage /> } />*/}
                     <Route path="/playlist" element={ <PlaylistPage /> } />
                     <Route path="/playlist-new" element={ <PlaylistNewPage /> } />
                     <Route path="/playlist-add" element={ <PlaylistAddPage /> } />

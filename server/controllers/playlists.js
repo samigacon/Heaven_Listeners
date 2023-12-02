@@ -19,7 +19,19 @@ async function addPlaylist(req, res) {
 }
 
 async function removePlaylist(req, res) {
+    try {
+        const playlistId = req.params.playlistId;
 
+        const query = 'DELETE FROM Playlist WHERE Playlist_ID = ?';
+        const values = [playlistId];
+
+        await db.query(query, values);
+
+        res.json({ message: 'Playlist Deleted with Success' });
+    } catch (error) {
+        console.error('Playlist Deletion Error :', error);
+        res.status(500).json({ error: 'Playlist Deletion Error' });
+    }
 }
 
 

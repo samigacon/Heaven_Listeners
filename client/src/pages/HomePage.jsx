@@ -32,16 +32,6 @@ export default function HomePage () {
                     <div className="last-playlists">Please register and login in profile to access to playlists</div>
                 </div>
             )}
-            {/* History and Favorites after Playlist
-            <h2 className="button-history">History</h2>
-            <div className="home-history">
-                <div className="last-hhistory">Last History 1</div>
-            </div>
-            <h2 className="button-favorites">Favorites</h2>
-            <div className="home-favorites">
-                <div className="last-favorites">Last Favorite 1</div>
-            </div>
-            */}
         </div>
     )
 }

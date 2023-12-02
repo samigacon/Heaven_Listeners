@@ -30,10 +30,6 @@ export default function LibraryPage () {
             ) : (
                 <h2>Please register and login in profile to access to playlists</h2>
             )}
-            {/*
-            <div className="library-history">History</div>
-            <div className="library-favorites">Favorites</div>
-            */}
         </>
     )
 }
