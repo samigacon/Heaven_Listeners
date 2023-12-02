@@ -53,7 +53,19 @@ async function renamePlaylist(req, res) {
 }
 
 async function addTrackToPlaylist(req, res) {
+    try {
+        const { playlistId, trackId } = req.body;
 
+        const query = 'INSERT INTO Track_Playlist (Playlist_ID, Track_ID) VALUES (?, ?)';
+        const values = [playlistId, trackId];
+
+        await db.query(query, values);
+
+        res.status(201).json({ message: 'Track Added with Success' });
+    } catch (error) {
+        console.error('Track Addition Error :', error);
+        res.status(500).json({ error: 'Track Addition Error' });
+    }
 }
 
 async function removeTrackFromPlaylist(req, res) {
