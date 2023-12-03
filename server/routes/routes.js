@@ -26,11 +26,11 @@ router.post('/register', userController.register);
 router.post('/login', userController.login); 
 router.post('/logout', userController.logout);
 
-router.get('/playlists-add', playlistsController.addPlaylist)
-router.get('/playlists-delete', playlistsController.removePlaylist)
-router.get('/playlists-rename', playlistsController.renamePlaylist)
-router.get('/track-add', playlistsController.addTrackToPlaylist)
-router.get('/track-delete', playlistsController.removeTrackFromPlaylist)
+router.post('/playlists-new', playlistsController.newPlaylist)
+router.post('/playlists-delete', playlistsController.removePlaylist)
+router.post('/playlists-rename', playlistsController.renamePlaylist)
+router.post('/track-add', playlistsController.addTrackToPlaylist)
+router.post('/track-delete', playlistsController.removeTrackFromPlaylist)
 
 
 module.exports.router = router;

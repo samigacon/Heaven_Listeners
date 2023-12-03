@@ -1,9 +1,9 @@
 import React from 'react';
 
 export default function LoginPage() {
+    const [message, setMessage] = React.useState('');
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [message, setMessage] = React.useState('');
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     
     React.useEffect(() => {
