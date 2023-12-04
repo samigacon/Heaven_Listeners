@@ -1,6 +1,18 @@
 const db = require('../models/database.js')
 const bcrypt = require('bcrypt')
 
+async function playlists(req, res) {
+    try {
+        const query = 'SELECT * FROM Playlist';
+        const playlists = await db.query(query);
+        console.log("playlists : " + JSON.stringify(playlists));
+        res.json(playlists);
+    } catch (error) {
+        console.error('Error Fetching Playlists:', error);
+        res.status(500).json({ error: 'Error Fetching Playlists' });
+    }
+}
+
 async function newPlaylist(req, res) {
     try {
         const name = req.body.name;
@@ -9,7 +21,6 @@ async function newPlaylist(req, res) {
         console.log(JSON.stringify(creationDate))
 
         const query = 'INSERT INTO Playlist (Name, Creation_Date) VALUES (?, ?)';
-        console.log(query);
         const values = [name, creationDate];
         console.log(JSON.stringify(values));
 
@@ -108,6 +119,7 @@ async function removeTrackFromPlaylist(req, res) {
     }
 }
 
+module.exports.playlists = playlists;
 module.exports.newPlaylist = newPlaylist;
 module.exports.removePlaylist = removePlaylist;
 module.exports.renamePlaylist = renamePlaylist;

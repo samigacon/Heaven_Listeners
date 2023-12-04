@@ -26,6 +26,7 @@ router.post('/register', userController.register);
 router.post('/login', userController.login); 
 router.post('/logout', userController.logout);
 
+router.get('/playlists', playlistsController.playlists)
 router.post('/playlists-new', playlistsController.newPlaylist)
 router.post('/playlists-delete', playlistsController.removePlaylist)
 router.post('/playlists-rename', playlistsController.renamePlaylist)
