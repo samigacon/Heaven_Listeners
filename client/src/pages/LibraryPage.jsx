@@ -46,7 +46,7 @@ export default function LibraryPage () {
                         <div className="library-list" key={index}>
                             {allPlaylists.map((playlist) => (
                                 <div key={playlist.Playlist_ID}>
-                                    <Link to={`/playlist/${playlist.Playlist_ID}`}>{playlist.Name}</Link>
+                                    <Link to={`/playlist/${playlist.Playlist_ID}/${playlist.Name}`}>{playlist.Name}</Link>
                                 </div>
                             ))}
                         </div>
