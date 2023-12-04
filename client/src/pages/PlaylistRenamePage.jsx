@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function PlaylistRenamePage () {
-    const [newName, setNewName] = useState('');
+    const {Playlist_ID, Name} = useParams();
+    const [newName, setNewName] = React.useState('');
+    const [message, setMessage] = React.useState('');
     
     const handleRename = async () => {
         try {
@@ -11,7 +15,8 @@ export default function PlaylistRenamePage () {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    newName: newName
+                    playlistId: Playlist_ID,
+                    newName: newName,
                 }),
             });
             if (response.ok) {
@@ -30,10 +35,20 @@ export default function PlaylistRenamePage () {
     return (
         <>
             <h1>Rename Playlist</h1>
-             <div className="search-bar renaming-playlist">
-                <input type="text" placeholder="New Playlist Name" value={newName} onChange={(e) => setNewName(e.target.value)} />
+            {console.log("Playlist_ID : " + Playlist_ID)}
+            <div className="search-bar renaming-playlist">
+                <label htmlFor="rename">Rename</label>
+                    <input 
+                    type="text"
+                    name="rename"
+                    placeholder="New Playlist Name" 
+                    value={newName} 
+                    required
+                    onChange={(e) => setNewName(e.target.value)} 
+                    />
                 <button onClick={handleRename}><Link to="/library">Rename</Link></button>
             </div>
+            {console.log("newName : " + newName)}
         </>
     )
 }

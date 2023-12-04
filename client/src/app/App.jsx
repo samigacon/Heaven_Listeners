@@ -14,7 +14,9 @@ import ArtistPage from '../pages/ArtistPage'
 import PlaylistPage from '../pages/PlaylistPage'
 import PlaylistNewPage from '../pages/PlaylistNewPage'
 import PlaylistRenamePage from '../pages/PlaylistRenamePage'
+import PlaylistDeletePage from '../pages/PlaylistDeletePage'
 // import TrackAddPage from '../pages/TrackAddPage'
+// import RemoveTrackFromPlaylistPage from '../pages/RemoveTrackFromPlaylistPage'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -33,10 +35,10 @@ export default function App() {
                     <Route path="/artist/:Artist_ID/Name" element={ <ArtistPage /> } />
                     <Route path="/playlist/:Playlist_ID/:Name" element={ <PlaylistPage /> } />
                     <Route path="/playlist-new" element={ <PlaylistNewPage /> } />
-                    <Route path="/playlist-rename" element={ <PlaylistRenamePage /> } />
+                    <Route path="/playlist-rename/:Playlist_ID/:Name" element={ <PlaylistRenamePage /> } />
+                    <Route path="/playlist-delete/:Playlist_ID/:Name" element={ <PlaylistDeletePage />} />
                    {/* <Route path="/playlist-add" element={ <TrackAddPage /> } /> */}
-                   {/* <Route path="/playlist-delete" element={ <DeletePlaylistPage />} /> */}
-                   {/*  <Route path="/track-delete" element={ <RemoveTrackFromPlaylistPage />} /> */}
+                   {/* <Route path="/track-delete" element={ <RemoveTrackFromPlaylistPage />} /> */}
                     <Route path="*" element={ <Error404 /> } />
                 </Routes>
                 <Footer />

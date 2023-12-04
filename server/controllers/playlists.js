@@ -1,11 +1,9 @@
 const db = require('../models/database.js')
-const bcrypt = require('bcrypt')
 
 async function playlists(req, res) {
     try {
         const query = 'SELECT * FROM Playlist';
         const playlists = await db.query(query);
-        console.log("playlists : " + JSON.stringify(playlists));
         res.json(playlists);
     } catch (error) {
         console.error('Error Fetching Playlists:', error);
@@ -36,13 +34,12 @@ async function newPlaylist(req, res) {
 
 async function removePlaylist(req, res) {
     try {
-        const playlistId = req.params.playlistId;
-        console.log(playlistId);
+        const playlistId = req.body.playlistId;
+        console.log("remove - playlistID : " + playlistId);
 
         const query = 'DELETE FROM Playlist WHERE Playlist_ID = ?';
-        console.log(query);
         const values = [playlistId];
-        console.log(JSON.stringify(values));
+        console.log("remove - values : " + JSON.stringify(values));
 
         await db.query(query, values);
         
@@ -54,18 +51,16 @@ async function removePlaylist(req, res) {
     }
 }
 
-
 async function renamePlaylist(req, res) {
     try {
-        const playlistId = req.params.playlistId;
-        console.log(playlistId);
-        const newName = req.body.name;
+        const playlistId = req.body.playlistId;
+        console.log("rename - playlistID : " + playlistId);
+        const newName = req.body.newName;
         console.log(newName);
 
         const query = 'UPDATE Playlist SET Name = ? WHERE Playlist_ID = ?';
-        console.log(query);
         const values = [newName, playlistId];
-        console.log(JSON.stringify(values));
+        console.log("rename - values : " + JSON.stringify(values));
 
         await db.query(query, values);
 
@@ -85,7 +80,6 @@ async function addTrackToPlaylist(req, res) {
         console.log(trackId);
 
         const query = 'INSERT INTO Track_Playlist (Playlist_ID, Track_ID) VALUES (?, ?)';
-        console.log(query);
         const values = [playlistId, trackId];
 
         await db.query(query, values);

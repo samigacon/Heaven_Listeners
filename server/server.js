@@ -9,7 +9,6 @@ const axios = require('axios');
 
 const crypto = require('crypto');
 const secretKey = "testKey-JFEOJFOPJZE0FDHOHFJHOQHVCOISDHFOIZHVOIHDVHSODIHVDSOIVODHSI";
-console.log('Clé secrète générée :', secretKey);
 
 const PORT = 3001;
 

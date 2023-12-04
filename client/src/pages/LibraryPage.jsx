@@ -20,16 +20,14 @@ export default function LibraryPage () {
         }
         // Collect Playlists
         fetchPlaylists();
-    }, []);
+    }, [playlists]);
     
     const fetchPlaylists = async () => {
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists');
             if (response.ok) {
                 const data = await response.json();
-                console.log('data : ' + JSON.stringify(data));
                 setPlaylists(data);
-                console.log('playlists : ' + JSON.stringify(playlists));
             }
         } catch (error) {
             console.error('Error Fetching Playlists:', error);
@@ -42,15 +40,22 @@ export default function LibraryPage () {
             {isLoggedIn ? (
                 <div className="library-playlists">
                     <button className="add-playlist"><Link to="/playlist-new">New Playlist</Link></button>
-                    {playlists.map((allPlaylists, index) => (
-                        <div className="library-list" key={index}>
-                            {allPlaylists.map((playlist) => (
-                                <div key={playlist.Playlist_ID}>
-                                    <Link to={`/playlist/${playlist.Playlist_ID}/${playlist.Name}`}>{playlist.Name}</Link>
-                                </div>
-                            ))}
-                        </div>
-                    ))}
+                  {/* First loop in the group of all playlists collected*/}
+                  {playlists.map((allPlaylists, index) => (
+                    <div key={index}>
+                      {/* Second loop in each playlist */}
+                      {allPlaylists.map((eachPlaylist) => (
+                        // If Playlist_ID exists
+                        eachPlaylist.Playlist_ID && (
+                          <div className="library-list" key={eachPlaylist.Playlist_ID}>
+                            <Link to={`/playlist/${eachPlaylist.Playlist_ID}/${eachPlaylist.Name}`}>
+                              {eachPlaylist.Name}
+                            </Link>
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  ))}
                 </div>
             ) : (
                 <h2>Please register and log in to access playlists</h2>

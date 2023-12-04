@@ -20,7 +20,7 @@
   font-family: "Bebas Neue";
   src: url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
 }
-h1, h2, h3, p, ul, li, a {
+h1, h2, h3, p, ul, li, a, label {
   font-family: "Bebas Neue";
   font-weight: normal;
   text-align: center;
