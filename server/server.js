@@ -134,6 +134,18 @@ app.get('/api/discogs/search', async (req, res) => {
     }
 });
 
+// Access to Releases
+app.get('/api/discogs/releases', async (req, res) => {
+    try {
+        // With Secret Key
+        const response = await axios.get(`https://api.discogs.com/masters/${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Query Error Discogs:', error);
+        res.status(500).send('Query Error Discogs');
+    }
+});
+
 
 // Launch
 app.listen(PORT, () => {

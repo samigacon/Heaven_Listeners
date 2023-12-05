@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import { useSearchQuery } from '../features/api/discogsApi';
+import { useSearchQuery } from '../features/api/SearchDiscogsApi';
     
 export default function SearchPage () {
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -18,10 +18,7 @@ export default function SearchPage () {
     };
     
     const artists = data ? filterResultsByType(data.results, 'artist') : [];
-    const tracks = data ? filterResultsByType(data.results, 'artist') : [];
-    console.log("Tracks : " + JSON.stringify(tracks));
     const releases = data ? filterResultsByType(data.results, 'release') : [];
-
     
     return (
         <>
@@ -32,7 +29,7 @@ export default function SearchPage () {
                         <input
                             type="text"
                             name="searching"
-                            placeholder="Searching by artist, track or album..."
+                            placeholder="Searching by artist or album..."
                             required
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
@@ -53,21 +50,6 @@ export default function SearchPage () {
                                     <div className='tags' key={artist.id}>
                                         {artist.title.replace(/\([^)]*\)/g, '').trim()}
                                         <Link to={`/artist/${artist.id}/${artist.title}`}><img src={artist.cover_image} alt={artist.title} /></Link>
-                                    </div>
-                                ))
-                            )}
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className="search-tag">Tracks</h2>
-                        <div className="search-tracks">
-                            {artists.length === 0 ? (
-                                <p>No track found.</p>
-                            ) : (
-                                artists.map((artist) => (
-                                    <div className='tags' key={artist.id}>
-                                        {artist.title.replace(/\([^)]*\)/g, '').trim()}
-                                        <Link to={`/artist/${artist.id}`}><img src={artist.cover_image} alt={artist.title} /></Link>
                                     </div>
                                 ))
                             )}
