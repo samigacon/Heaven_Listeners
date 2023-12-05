@@ -7,7 +7,7 @@ export default function ArtistPage () {
     return (
         <>
             <h1>Artist - {Name}</h1>
-            <img src="" alt={Name} />
+            <img className="artist-selected" src="" alt={Name} />
         </>
     );
 }

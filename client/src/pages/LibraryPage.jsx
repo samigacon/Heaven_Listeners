@@ -40,22 +40,20 @@ export default function LibraryPage () {
             {isLoggedIn ? (
                 <div className="library-playlists">
                     <button className="add-playlist"><Link to="/playlist-new">New Playlist</Link></button>
-                  {/* First loop in the group of all playlists collected*/}
-                  {playlists.map((allPlaylists, index) => (
-                    <div key={index}>
-                      {/* Second loop in each playlist */}
-                      {allPlaylists.map((eachPlaylist) => (
-                        // If Playlist_ID exists
-                        eachPlaylist.Playlist_ID && (
-                          <div className="library-list" key={eachPlaylist.Playlist_ID}>
-                            <Link to={`/playlist/${eachPlaylist.Playlist_ID}/${eachPlaylist.Name}`}>
-                              {eachPlaylist.Name}
-                            </Link>
-                          </div>
-                        )
-                      ))}
-                    </div>
-                  ))}
+                    {/* First loop in the group of all playlists collected*/}
+                    {playlists.map((allPlaylists, index) => (
+                        <div key={index}>
+                            {/* Second loop in each playlist */}
+                            {allPlaylists.map((eachPlaylist) => (
+                                // If Playlist_ID exists
+                                eachPlaylist.Playlist_ID && (
+                                <div className="library-list" key={eachPlaylist.Playlist_ID}>
+                                    <Link to={`/playlist/${eachPlaylist.Playlist_ID}/${eachPlaylist.Name}`}>{eachPlaylist.Name}</Link>
+                                </div>
+                                )
+                            ))}
+                        </div>
+                    ))}
                 </div>
             ) : (
                 <h2>Please register and log in to access playlists</h2>

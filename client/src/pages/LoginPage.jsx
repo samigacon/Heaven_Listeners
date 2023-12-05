@@ -123,7 +123,7 @@ export default function LoginPage() {
             <h1>Profile</h1>
             { isLoggedIn ? (
                 <div>
-                    <h2>Welcome to Heaven Listeners !</h2>
+                    <h2>You are connected !</h2>
                     <button type="button" onClick={handleLogout}>Logout</button>
                 </div>
             ) : (

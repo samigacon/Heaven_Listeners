@@ -37,7 +37,7 @@ export default function SearchPage () {
                 </form>
             </div>
             {isLoading ? (
-                <p>Loading...</p>
+                <h3>Loading...</h3>
             ) : (
                 <div>
                     <div>
@@ -59,7 +59,7 @@ export default function SearchPage () {
                         <h2 className="search-tag">Albums</h2>
                         <div className="search-album">
                             {releases.length === 0 ? (
-                                <p>No album found.</p>
+                                <h3>No album found.</h3>
                             ) : (
                                 releases.map((release) => (
                                     <div className='tags' key={release.id}>

@@ -6,8 +6,8 @@ export default function AlbumPage () {
     const { Album_ID, Title } = useParams();
     const { data: tracklist, isLoading, isError } = useGetTracklistQuery(Album_ID);
 
-    if (isLoading) return <p>Loading...</p>;
-    if (isError) return <p>Error loading the tracklist.</p>;
+    if (isLoading) return <h2>Loading...</h2>;
+    if (isError) return <h2>Error loading the tracklist.</h2>;
 
     return (
         <>

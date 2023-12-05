@@ -181,6 +181,12 @@ a:hover {
   margin-top: -20px;
 }
 
+.artist-selected {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
 .library-history, .library-favorites {
   font-family: "Bebas Neue";
   font-size: 30px;
