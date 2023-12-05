@@ -2,13 +2,12 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 
 export default function AlbumPage () {
-    const { releaseId } = useParams();
-    
+    const { Album_ID, Title } = useParams();
     
     return (
         <>
-            <h1>{releaseId}</h1>
-            {console.log('releaseId : ' + releaseId)}
+            <h1>Release - {Title}</h1>
+            <img src="" alt={Title} />
         </>
     )
 }

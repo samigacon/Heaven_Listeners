@@ -55,7 +55,6 @@ const db = new Discogs().database();
 const dis = new Discogs('MyUserAgent/1.0');
 const col = new Discogs().user().collection();
 const config = new Discogs().setConfig({outputFormat: 'html'});
-const token = new Discogs({userToken: 'BRVUUsxvwpJnbYFpYaZyXEuHTeTcplNCadiruXBU'});
 const data = new Discogs({
 	consumerKey: discogsApiKey, 
 	consumerSecret: discogsApiSecret
@@ -120,6 +119,19 @@ app.get('/identity', function(req, res){
         }
         res.send(data);
     });
+});
+
+
+// Access to Database
+app.get('/api/discogs/search', async (req, res) => {
+    try {
+        // With Secret Key
+        const response = await axios.get(`https://api.discogs.com/database/search?q=${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Query Error Discogs:', error);
+        res.status(500).send('Query Error Discogs');
+    }
 });
 
 

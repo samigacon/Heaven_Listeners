@@ -32,7 +32,7 @@ export default function App() {
                     <Route path="/login" element={ <LoginPage /> } />
                     <Route path="/track/:Track_ID/:Title" element={ <TrackPage /> } />
                     <Route path="/album/:Album_ID/:Title" element={ <AlbumPage /> } />
-                    <Route path="/artist/:Artist_ID/Name" element={ <ArtistPage /> } />
+                    <Route path="/artist/:Artist_ID/:Name" element={ <ArtistPage /> } />
                     <Route path="/playlist/:Playlist_ID/:Name" element={ <PlaylistPage /> } />
                     <Route path="/playlist-new" element={ <PlaylistNewPage /> } />
                     <Route path="/playlist-rename/:Playlist_ID/:Name" element={ <PlaylistRenamePage /> } />
