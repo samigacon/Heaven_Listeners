@@ -76,8 +76,8 @@ async function addTrackToPlaylist(req, res) {
     try {
         const playlistId = req.body.playlistId;
         const trackId = req.body.trackId;
-        console.log(playlistId);
-        console.log(trackId);
+        console.log("playlistId : " + playlistId);
+        console.log("trackId : " + trackId);
 
         const query = 'INSERT INTO Track_Playlist (Playlist_ID, Track_ID) VALUES (?, ?)';
         const values = [playlistId, trackId];

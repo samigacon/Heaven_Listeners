@@ -217,7 +217,7 @@ a:hover {
   list-style-type: none;
 }
 
-.add-playlist, .delete-playlist, .rename-playlist {
+.add-playlist, .delete-playlist, .rename-playlist, .add-track {
   display: block;
   margin: auto;
   font-family: "Bebas Neue";
@@ -234,7 +234,7 @@ a:hover {
   list-style-type: none;
 }
 
-.add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover {
+.add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover, .add-track:hover {
   color: #FFF;
   transition: 0.2s;
   cursor: pointer;
@@ -305,20 +305,5 @@ label {
 footer {
   padding: 5px;
 }
-
-/*
-// Responsive
-@media (min-width: 768px) and (max-width: 1280px) {
-    .container {
-        width: 50%;
-    }
-}
-
-@media (min-width: 1280px) {
-    .container {
-        width: 100%;
-    }
-}
-*/
 
 /*# sourceMappingURL=App.css.map */

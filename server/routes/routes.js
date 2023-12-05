@@ -1,22 +1,8 @@
 const express = require("express");
-/*const session = require('express-session');*/
 
 // Controllers
 const userController = require('../controllers/user.js');
 const playlistsController = require('../controllers/playlists.js');
-
-/*
-// Access if Connected
-function isAuthenticated(req, res, next) {
-    if (req.session && req.session.connected) {
-        console.log('You can enter as you are connected !');
-        return next();
-    } else {
-        console.log('401 Unauthorized - You are not connected !');
-        return res.status(401).json({error: '401 Unauthorized'});
-    }
-}
-*/
 
 // Routes
 const router = express.Router();

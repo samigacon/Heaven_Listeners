@@ -32,8 +32,8 @@ $accessibility-color: #000;
 
 // Fonts
 @font-face {
-  font-family: "Bebas Neue";
-  src: url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
+    font-family: "Bebas Neue";
+    src: url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 
 
@@ -206,7 +206,7 @@ a:hover {
     margin-top: -20px;
 }
 
-.artist-selected{
+.artist-selected {
     display: block;
     margin: auto;
     text-align: center;
@@ -243,7 +243,7 @@ a:hover {
     list-style-type: none;
 }
 
-.add-playlist, .delete-playlist, .rename-playlist {
+.add-playlist, .delete-playlist, .rename-playlist, .add-track {
     display: block;
     margin: auto;
     font-family: "Bebas Neue";
@@ -260,7 +260,7 @@ a:hover {
     list-style-type: none;
 }
 
-.add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover {
+.add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover, .add-track:hover {
     color: $selection-color;
     transition: 0.2s;
     cursor: pointer;
@@ -337,17 +337,11 @@ footer {
 }
 
 
-/*
 // Responsive
 @media (min-width: 768px) and (max-width: 1280px) {
-    .container {
-        width: 50%;
-    }
+
 }
 
 @media (min-width: 1280px) {
-    .container {
-        width: 100%;
-    }
+
 }
-*/
