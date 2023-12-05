@@ -44,13 +44,15 @@ ul {
   align-items: center;
   text-decoration: none;
   list-style-type: none;
+  padding: 10px;
+  font-size: 22px;
 }
 
 li {
   padding: 10px;
 }
 
-header a {
+header li {
   margin: 10px;
   text-decoration: none;
   color: #000;

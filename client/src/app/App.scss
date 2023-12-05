@@ -62,6 +62,8 @@ ul {
     align-items: center;
     text-decoration: none;
     list-style-type: none;
+    padding: 10px;
+    font-size: 22px;
 }
 
 li {
@@ -69,7 +71,7 @@ li {
 }
 
 // Header
-header a {
+header li {
     margin: 10px;
     text-decoration: none;
     color: #000;
@@ -77,6 +79,7 @@ header a {
     border-radius: 15px;
 }
 
+// Link = a
 a {
     color: black;
     text-decoration: none;

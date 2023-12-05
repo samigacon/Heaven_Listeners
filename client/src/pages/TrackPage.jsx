@@ -7,7 +7,6 @@ export default function TrackPage () {
     return (
         <>
             <h1>Track - {Title}</h1>
-            <img src="" alt={Title} />
             <button className="add-playlist"><Link to="/library">Add to Playlist</Link></button>
         </>
     )

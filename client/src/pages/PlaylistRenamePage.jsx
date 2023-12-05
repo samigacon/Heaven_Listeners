@@ -48,7 +48,6 @@ export default function PlaylistRenamePage () {
                     />
                 <button onClick={handleRename}><Link to="/library">Rename</Link></button>
             </div>
-            {console.log("newName : " + newName)}
         </>
     )
 }

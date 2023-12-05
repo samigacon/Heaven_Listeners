@@ -10,10 +10,10 @@ export default function Header() {
         <header>
             <div className="summary">
                 <ul>
-                    <a><li><Link to="/">Home</Link></li></a>
-                    <a><li><Link to="/search">Search</Link></li></a>
-                    <a><li><Link to="/library">Library</Link></li></a>
-                    <a><li><Link to="/login">Profile</Link></li></a>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/search">Search</Link></li>
+                    <li><Link to="/library">Library</Link></li>
+                    <li><Link to="/login">Profile</Link></li>
                 </ul>
             </div>
         </header>

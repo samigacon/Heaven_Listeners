@@ -39,7 +39,6 @@ export default function PlaylistNewPage () {
                 onChange={(e) => setName(e.target.value)}/>
                 <button onClick={handleAdd}><Link to="/library">New</Link></button>
             </div>
-            {console.log('name : ' + name)}
         </>
     )
 }
