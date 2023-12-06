@@ -35,7 +35,6 @@ export default function PlaylistRenamePage () {
     return (
         <>
             <h1>Rename Playlist</h1>
-            {console.log("Playlist_ID : " + Playlist_ID)}
             <div className="search-bar renaming-playlist">
                 <label htmlFor="rename">Rename</label>
                     <input 

@@ -19,21 +19,21 @@ export default function LibraryPage () {
             setIsLoggedIn(false);
         }
         // Collect Playlists
+        const fetchPlaylists = async () => {
+            try {
+                const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists');
+                if (response.ok) {
+                    const data = await response.json();
+                    setPlaylists(data);
+                }
+            } catch (error) {
+                console.error('Error Fetching Playlists:', error);
+            }
+        };
         fetchPlaylists();
     }, [playlists]);
     
-    const fetchPlaylists = async () => {
-        try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists');
-            if (response.ok) {
-                const data = await response.json();
-                setPlaylists(data);
-            }
-        } catch (error) {
-            console.error('Error Fetching Playlists:', error);
-        }
-    };
-    
+
     return (
         <>
             <h1>Library</h1>
