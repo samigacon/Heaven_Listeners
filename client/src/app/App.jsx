@@ -36,7 +36,7 @@ export default function App() {
                     <Route path="/playlist-rename/:Playlist_ID/:Name" element={ <PlaylistRenamePage /> } />
                     <Route path="/playlist-delete/:Playlist_ID/:Name" element={ <PlaylistDeletePage />} />
                     <Route path="/track-add/:Album_ID/:Track_Title" element={ <TrackAddPage /> } />
-                    <Route path="/track-delete" element={ <RemoveTrackFromPlaylistPage />} />
+                    <Route path="/track-delete/:Playlist_ID/:Track_ID" element={ <RemoveTrackFromPlaylistPage />} />
                     <Route path="*" element={ <Error404 /> } />
                 </Routes>
                 <Footer />

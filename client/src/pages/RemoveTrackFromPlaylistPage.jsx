@@ -3,27 +3,27 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 export default function RemoveTrackFromPlaylistPage () {
-    const {Playlist_ID, Name} = useParams();
+    const {Playlist_ID, Track_ID} = useParams();
     const [message, setMessage] = React.useState('');
     
     const handleDelete = async () => {
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists-delete', {
+            const response = await fetch('http://samigacon.ide.3wa.io:3001/track-delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     playlistId: Playlist_ID,
-                    name: Name,
+                    trackId: Track_ID,
                 }),
             });
             if (response.ok) {
-                console.log('Deleting Done');
-                setMessage('Deleting Done');
+                console.log('Deleting Track Done');
+                setMessage('Deleting Track Done');
             } else {
-                console.log('Deleting Error' + ' ' + response.status + ' ' + response.statusText);
-                setMessage('Deleting Error');
+                console.log('Deleting Track Error' + ' ' + response.status + ' ' + response.statusText);
+                setMessage('Deleting Track Error');
             }
         } catch (error) {
             console.log('Deleting Query Error', error);
