@@ -3,20 +3,12 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 export default function TrackAddPage () {
-    const { Album_ID, Track_ID } = useParams();
+    const { Album_ID, Track_Title } = useParams();
     const [message, setMessage] = React.useState('');
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [playlists, setPlaylists] = React.useState([]);
     
+    // Collect Playlists
     React.useEffect(() => {
-        // Keep Session if Connected
-        const localUserConnected = localStorage.getItem('userConnected');
-        if (localUserConnected === 'true') {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
-        // Collect Playlists
         fetchPlaylists();
     }, [playlists]);
     
@@ -33,6 +25,8 @@ export default function TrackAddPage () {
     };
     
     const handleAddTrack = async (Playlist_ID) => {
+        console.log("Playlist_ID : " + Playlist_ID);
+        console.log("Track_Title : " + Track_Title);
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/track-add', {
                 method: 'POST',
@@ -41,7 +35,7 @@ export default function TrackAddPage () {
                 },
                 body: JSON.stringify({
                     playlistId: Playlist_ID,
-                    trackId: Track_ID,
+                    trackTitle: Track_Title,
                 }),
             });
             if (response.ok) {
@@ -60,8 +54,10 @@ export default function TrackAddPage () {
     return (
         <>
             <h1>Which Playlist to Add ?</h1>
+            {/*First Loop for all Playlists*/}
             {playlists.map((allPlaylists, index) => (
                 <div key={index}>
+                    {/* Second Loop for Each Playlist*/}
                     {allPlaylists.map((eachPlaylist) => (
                         eachPlaylist.Playlist_ID && (
                         <div className="playlist-selection" key={eachPlaylist.Playlist_ID}>

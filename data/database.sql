@@ -14,7 +14,7 @@ CREATE TABLE Artist (
 CREATE TABLE Album (
     Album_ID INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
-    Release_Date DATE NOT NULL,
+    Release_Date DATE,
     Cover BLOB
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE Track (
     Track_ID INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
     Duration INT, 
-    Release_Date DATE NOT NULL,
+    Release_Date DATE,
     Cover BLOB,
     Album_ID INT,
     FOREIGN KEY (Album_ID) REFERENCES Album(Album_ID) ON DELETE SET NULL

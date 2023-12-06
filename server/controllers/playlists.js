@@ -75,14 +75,26 @@ async function renamePlaylist(req, res) {
 async function addTrackToPlaylist(req, res) {
     try {
         const playlistId = req.body.playlistId;
-        const trackId = req.body.trackId;
+        const trackTitle = req.body.trackTitle;
         console.log("playlistId : " + playlistId);
+        console.log("trackTitle : " + trackTitle);
+
+        // Insert Track in Track Table
+        const TrackQuery = 'INSERT INTO Track (Title) VALUES (?)';
+        const TrackValues = [trackTitle];
+        await db.query(TrackQuery, TrackValues);
+
+        // Collect ID of Track Added
+        const selectTrackIdQuery = 'SELECT LAST_INSERT_ID() as Track_ID';
+        const trackIdResult = await db.query(selectTrackIdQuery);
+        console.log("trackIdResult : " + JSON.stringify(trackIdResult));
+        const trackId = trackIdResult[0][0].Track_ID; // trackIdResult = [[{"Track_ID":XXX}]... in console.log
         console.log("trackId : " + trackId);
 
-        const query = 'INSERT INTO Track_Playlist (Playlist_ID, Track_ID) VALUES (?, ?)';
-        const values = [playlistId, trackId];
-
-        await db.query(query, values);
+        // Link Track with Playlist in Track_Playlist Table with Track ID Collected
+        const insertTrackPlaylistQuery = 'INSERT INTO Track_Playlist (Playlist_ID, Track_ID) VALUES (?, ?)';
+        const insertTrackPlaylistValues = [playlistId, trackId];
+        await db.query(insertTrackPlaylistQuery, insertTrackPlaylistValues);
 
         console.log('message: Track Added with Success');
         res.status(201).json({ message: 'Track Added with Success' });
@@ -100,9 +112,7 @@ async function removeTrackFromPlaylist(req, res) {
         console.log(trackId);
 
         const query = 'DELETE FROM Track_Playlist WHERE Playlist_ID = ? AND Track_ID = ?';
-        console.log(query);
         const values = [playlistId, trackId];
-        console.log(JSON.stringify(values));
 
         await db.query(query, values);
 
