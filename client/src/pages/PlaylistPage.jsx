@@ -33,25 +33,22 @@ export default function PlaylistPage () {
     }, [Playlist_ID]);
     
     return (
-        <>
+       <>
             <h1>Playlist</h1>
             <h2>Name: {Name}</h2>
-            {/*Ignore if Playlist is Completely Empty*/}
-            {tracks.length === 0 ? (
-                <h3>No tracks in this playlist.</h3>
-            ) : (
-                <ul>
-                    {/*Get Only First Element of Playlist*/}
-                    {tracks.map((track) => (
-                        <li key={track[0].Track_ID}>
-                            {track[0].Title}
-                            <button className="delete-playlist"><Link to={`/track-delete/${Playlist_ID}/${track[0].Track_ID}`}>Delete Track</Link></button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <ul>
+                {/*Get Only First Element of Playlist and Filter Empty Tracks*/}
+                {tracks.filter((track) =>  track[0] && track[0].Title && track[0].Track_ID).map((track) => (
+                    <li key={track[0].Track_ID}>
+                        {track[0].Title}
+                        <button className="delete-playlist"><Link to={`/track-delete/${Playlist_ID}/${track[0].Track_ID}`}>Delete Track</Link></button>
+                    </li>
+                ))}
+            </ul>
             <button className="rename-playlist"><Link to={`/playlist-rename/${Playlist_ID}/${Name}`}>Rename Playlist</Link></button>
             <button className="delete-playlist"><Link to={`/playlist-delete/${Playlist_ID}/${Name}`}>Delete Playlist</Link></button>
         </>
     );
 }
+ 
+ 
