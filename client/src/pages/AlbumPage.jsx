@@ -6,6 +6,17 @@ import { useGetTracklistQuery } from '../features/api/ReleasesDiscogsApi';
 export default function AlbumPage () {
     const { Album_ID, Title } = useParams();
     const { data: tracklist, isLoading, isError } = useGetTracklistQuery(Album_ID);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    
+    React.useEffect(() => {
+        // Keep Session if Connected
+        const localUserConnected = localStorage.getItem('userConnected');
+        if (localUserConnected === 'true') {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
 
     if (isLoading) return <h2>Loading...</h2>;
     if (isError) return <h2>Error loading the tracklist.</h2>;
@@ -18,7 +29,9 @@ export default function AlbumPage () {
                 {tracklist?.tracklist.map((track, index) => ( 
                     <div key={index}>
                         <h2>{track.position} : {track.title} - {track.duration}</h2>
-                        <button className="add-track"><Link to={`/track-add/${Album_ID}/${track.title}`}>Add to a Playlist</Link></button>
+                        {isLoggedIn && (
+                            <button className="add-track"><Link to={`/track-add/${Album_ID}/${track.title}`}>Add to a Playlist</Link></button>
+                        )}
                     </div>
                 ))}
             </div>
