@@ -45,7 +45,7 @@ app.use('/', routes.router);
 
 // Discogs
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config({ path: './.env' });
 
 const discogsApiKey = process.env.discogsApiKey;
 const discogsApiSecret = process.env.discogsApiSecret;
@@ -126,7 +126,7 @@ app.get('/identity', function(req, res){
 app.get('/api/discogs/search', async (req, res) => {
     try {
         // With Secret Key
-        const response = await axios.get(`https://api.discogs.com/database/search?q=${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
+        const response = await axios.get(`https://api.discogs.com/database/search?q=${req.query.q}&key=${discogsApiKey}&secret=${discogsApiSecret}`);
         res.json(response.data);
     } catch (error) {
         // console.error('Query Error Discogs:', error);
@@ -138,7 +138,7 @@ app.get('/api/discogs/search', async (req, res) => {
 app.get('/api/discogs/releases', async (req, res) => {
     try {
         // With Secret Key
-        const response = await axios.get(`https://api.discogs.com/masters/${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
+        const response = await axios.get(`https://api.discogs.com/masters/${req.query.q}&key=${discogsApiKey}&secret=${discogsApiSecret}`);
         res.json(response.data);
     } catch (error) {
         // console.error('Query Error Discogs:', error);
