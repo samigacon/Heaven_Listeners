@@ -130,7 +130,7 @@ app.get('/api/discogs/search', async (req, res) => {
         res.json(response.data);
     } catch (error) {
         // console.error('Query Error Discogs:', error);
-        // res.status(500).send('Query Error Discogs');
+        res.status(500).send('Query Error Discogs');
     }
 });
 
