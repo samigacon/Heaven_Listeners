@@ -1,4 +1,4 @@
-const mysql2 = require('mysql2/promise')
+const mysql2 = require('mysql2/promise');
 
 let pool = mysql2.createPool({
     connectionLimit: 10000,
@@ -8,4 +8,4 @@ let pool = mysql2.createPool({
     database: "samigacon_heaven_listeners",
 });
 
-module.exports = pool
+module.exports = pool;

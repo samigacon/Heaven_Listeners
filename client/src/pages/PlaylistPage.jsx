@@ -23,10 +23,10 @@ export default function PlaylistPage () {
                     const data = await response.json();
                     setTracks(data);
                 } else {
-                    console.error('Error Fetching Tracks:', response.statusText);
+                    // console.error('Error Fetching Tracks:', response.statusText);
                 }
             } catch (error) {
-                console.error('Error Fetching Tracks:', error);
+                // console.error('Error Fetching Tracks:', error);
             }
         };
         fetchTracks();

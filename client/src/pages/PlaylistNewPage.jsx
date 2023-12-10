@@ -17,14 +17,14 @@ export default function PlaylistNewPage () {
                 }),
             });
             if (response.ok) {
-                console.log('New Playlist Done');
+                // console.log('New Playlist Done');
                 setMessage('Adding Playlist Done');
             } else {
-                console.log('Adding Playlist Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Adding Playlist Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Adding Playlist Error');
             }
         } catch (error) {
-            console.log('Adding Playlist Query Error', error);
+            // console.error('Adding Playlist Query Error', error);
             setMessage('Adding Playlist Query Error.');
         }
     }

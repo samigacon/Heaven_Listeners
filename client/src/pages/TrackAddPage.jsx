@@ -20,13 +20,13 @@ export default function TrackAddPage () {
                 setPlaylists(data);
             }
         } catch (error) {
-            console.error('Error Fetching Playlists:', error);
+            // console.error('Error Fetching Playlists:', error);
         }
     };
     
     const handleAddTrack = async (Playlist_ID) => {
-        console.log("Playlist_ID : " + Playlist_ID);
-        console.log("Track_Title : " + Track_Title);
+        // console.log("Playlist_ID : " + Playlist_ID);
+        // console.log("Track_Title : " + Track_Title);
         try {
             const response = await fetch('http://samigacon.ide.3wa.io:3001/track-add', {
                 method: 'POST',
@@ -39,14 +39,14 @@ export default function TrackAddPage () {
                 }),
             });
             if (response.ok) {
-                console.log('Track Added');
+                // console.log('Track Added');
                 setMessage('Track Added');
             } else {
-                console.log('Track Adding Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Track Adding Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Track Adding Error');
             }
         } catch (error) {
-            console.log('Track Adding Query Error', error);
+            // console.error('Track Adding Query Error', error);
             setMessage('Track Adding Query Error.');
         }
     }

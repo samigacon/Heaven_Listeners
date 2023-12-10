@@ -19,14 +19,14 @@ export default function PlaylistDeletePage () {
                 }),
             });
             if (response.ok) {
-                console.log('Deleting Done');
+                // console.log('Deleting Done');
                 setMessage('Deleting Done');
             } else {
-                console.log('Deleting Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Deleting Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Deleting Error');
             }
         } catch (error) {
-            console.log('Deleting Query Error', error);
+            // console.error('Deleting Query Error', error);
             setMessage('Deleting Query Error.');
         }
     }

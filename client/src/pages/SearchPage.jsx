@@ -48,7 +48,7 @@ export default function SearchPage () {
                             ) : (
                                 artists.map((artist) => (
                                     <div className='tags' key={artist.id}>
-                                        {artist.title.replace(/\([^)]*\)/g, '').trim()}
+                                        {artist.title.replace(/\([^)]*\)/g, '').trim()} {/*Remove Parenthesis*/}
                                         <Link to={`/artist/${artist.id}/${artist.title}`}><img src={artist.cover_image} alt={artist.title} /></Link>
                                     </div>
                                 ))

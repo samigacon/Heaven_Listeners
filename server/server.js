@@ -8,7 +8,7 @@ const FileStore = require('session-file-store')(session);
 const axios = require('axios');
 
 const crypto = require('crypto');
-const secretKey = "testKey-JFEOJFOPJZE0FDHOHFJHOQHVCOISDHFOIZHVOIHDVHSODIHVDSOIVODHSI";
+const secretKey = "Key-JFEOJFOPJZE0FDHOHFJHOQHVCOISDHFOIZHVOIHDVHSODIHVDSOIVODHSI";
 
 const PORT = 3001;
 
@@ -61,17 +61,17 @@ const data = new Discogs({
 });
 
 
-// Initialize OAuth Authentication
+// Initialize OAuth Authentication - Discogs Guide
 app.get('/authorize', function(req, res){
     const oAuth = new Discogs().oauth();
-    console.log("oAuth Init : " + JSON.stringify(oAuth));
+    // console.log("oAuth Init : " + JSON.stringify(oAuth));
     oAuth.getRequestToken(
         'kzwaXswmrokVpsgrxEdm', 
         'oRraKrTFCIotmweTGYgAaMarsdFVwIFA', 
         'http://samigacon.ide.3wa.io:3001/callback', 
-        function(err, requestData){
-            if (err) {
-                console.error('Error During Request Token Request:', err);
+        function(error, requestData){
+            if (error) {
+                // console.error('Error During Request Token Request:', error);
                 return res.status(500).send('Server Error');
             }
             req.session.requestData = requestData;
@@ -80,21 +80,21 @@ app.get('/authorize', function(req, res){
     );
 });
 
-// Discogs Response and Token Access
+// Discogs Response and Token Access - Discogs Guide
 app.get('/callback', function(req, res) {
     const { oauth_verifier } = req.query;
     const requestData = req.session.requestData;
-    console.log("requestData : " + JSON.stringify(requestData));
+    // console.log("requestData : " + JSON.stringify(requestData));
     if (!requestData || !oauth_verifier) {
         return res.status(400).send("OAuth Information Required is missing.");
     }
     const oAuth = new Discogs(requestData).oauth();
-    console.log("oAuth Response : " + JSON.stringify(oAuth));
+    // console.log("oAuth Response : " + JSON.stringify(oAuth));
     oAuth.getAccessToken(
         oauth_verifier, 
-        function(err, accessData) {
-            if (err) {
-                console.error('Error Obtaining Access Token', err);
+        function(error, accessData) {
+            if (error) {
+                // console.error('Error Obtaining Access Token', error);
                 return res.status(500).send('Server Error');
             }
             req.session.accessData = accessData;
@@ -103,18 +103,18 @@ app.get('/callback', function(req, res) {
     );
 });
 
-// Using Access Token for User Information with Discogs API
+// Using Access Token for User Information with Discogs API - Discogs Guide
 app.get('/identity', function(req, res){
     const accessData = req.session.accessData;
-    console.log("accessData : " + JSON.stringify(accessData));
+    // console.log("accessData : " + JSON.stringify(accessData));
     if (!accessData) {
         return res.status(400).send("OAuth Data Access missing.");
     }
     const dis = new Discogs(accessData);
-    console.log("Discogs(accessData) : " + JSON.stringify(dis));
+    // console.log("Discogs(accessData) : " + JSON.stringify(dis));
     dis.getIdentity(function(err, data){
         if (err) {
-            console.error('Error Retrieving Identity:', err);
+            // console.error('Error Retrieving Identity:', err);
             return res.status(500).send('Server Error');
         }
         res.send(data);
@@ -129,8 +129,8 @@ app.get('/api/discogs/search', async (req, res) => {
         const response = await axios.get(`https://api.discogs.com/database/search?q=${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
         res.json(response.data);
     } catch (error) {
-        console.error('Query Error Discogs:', error);
-        res.status(500).send('Query Error Discogs');
+        // console.error('Query Error Discogs:', error);
+        // res.status(500).send('Query Error Discogs');
     }
 });
 
@@ -141,7 +141,7 @@ app.get('/api/discogs/releases', async (req, res) => {
         const response = await axios.get(`https://api.discogs.com/masters/${req.query.q}&key=kzwaXswmrokVpsgrxEdm&secret=oRraKrTFCIotmweTGYgAaMarsdFVwIFA`);
         res.json(response.data);
     } catch (error) {
-        console.error('Query Error Discogs:', error);
+        // console.error('Query Error Discogs:', error);
         res.status(500).send('Query Error Discogs');
     }
 });
@@ -149,5 +149,5 @@ app.get('/api/discogs/releases', async (req, res) => {
 
 // Launch
 app.listen(PORT, () => {
-    console.log(`Server is launching with port ${PORT}`);
+    // console.log(`Server is launching with port ${PORT}`);
 });

@@ -19,14 +19,14 @@ export default function RemoveTrackFromPlaylistPage () {
                 }),
             });
             if (response.ok) {
-                console.log('Deleting Track Done');
+                // console.log('Deleting Track Done');
                 setMessage('Deleting Track Done');
             } else {
-                console.log('Deleting Track Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Deleting Track Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Deleting Track Error');
             }
         } catch (error) {
-            console.log('Deleting Query Error', error);
+            // console.error('Deleting Query Error', error);
             setMessage('Deleting Query Error.');
         }
     }

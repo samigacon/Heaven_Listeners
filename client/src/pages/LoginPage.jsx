@@ -49,14 +49,14 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 setMessage('Authentication Done');
-                console.log('Message : ' + message);
+                // console.log('Message : ' + message);
                 
             } else {
-                console.log('Authentication Error', response.status, response.statusText);
+                // console.log('Authentication Error', response.status, response.statusText);
                 setMessage('Authentication Error');
             }
         } catch (error) {
-             console.log('Register Query Error', error);
+            // console.log('Register Query Error', error);
             setMessage('Register Query Error');
         }
     }
@@ -78,14 +78,14 @@ export default function LoginPage() {
                 setIsLoggedIn(true);
                 setUsername(username);
                 localStorage.setItem('userConnected', 'true');
-                console.log('Login Done');
+                // console.log('Login Done');
                 setMessage('Login Done');
             } else {
-                console.log('Login Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Login Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Login Error');
             }
         } catch (error) {
-            console.log('Login Query Error', error);
+            // console.log('Login Query Error', error);
             setMessage('Login Query Error.');
         }
     }
@@ -105,15 +105,15 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 setMessage('Logout Done');
-                console.log('Message : ' + message);
+               // console.log('Message : ' + message);
                 localStorage.setItem('userConnected', 'false');
                 setIsLoggedIn(false);
             } else {
-                console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Logout Error');
             }
         } catch (error) {
-            console.log('Logout Query Error', error);
+            // console.log('Logout Query Error', error);
             setMessage('Logout Query Error.');
         }
     }

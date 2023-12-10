@@ -18,17 +18,16 @@ async function register (req, res) {
         `,
             [username, passwordHash]
         );
-        console.log('Registration Successful');
+        // console.log('Registration Successful');
         return res.json({ success: true, message: 'Registration Successful' });
-    } catch (e) {
-        console.error(e);
-        console.log('Registration Failed');
+    } catch (error) {
+        // console.error('Registration Failed', error);
         return res.status(500).json({ success: false, message: 'Registration Failed' });
     }
 }
 
 async function login (req, res) {
-    console.log('req.session: ', req.session);
+    // console.log('req.session: ', req.session);
     const username = req.body.username;
     const password = req.body.password;
     
@@ -40,7 +39,7 @@ async function login (req, res) {
             WHERE Username = ?
         `, [username]);
     
-        console.log("users : " + JSON.stringify(users));
+        // console.log("users : " + JSON.stringify(users));
     
         if (users.length == 0) {
             return res.status(401).json({success: false});
@@ -48,9 +47,9 @@ async function login (req, res) {
     
         // Hashed Password Match
         const hashedPassword = users[0].Password;
-        console.log('hashedPassword : ' + hashedPassword);
+        // console.log('hashedPassword : ' + hashedPassword);
         const match = await bcrypt.compare(password, hashedPassword);
-        console.log('Match: ' + match);
+        // console.log('Match: ' + match);
         if (match) {
             // Store User Session
             req.session.user = users[0];
@@ -58,23 +57,22 @@ async function login (req, res) {
             return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
             
         } else {
-            console.log('Login Failed');
+            // console.log('Login Failed');
             return res.status(401).json({ success: false, message: 'Login Failed' });
         }
-    } catch (e) {
-        console.error(e);
-        console.log('Login Error');
+    } catch (error) {
+        // console.error('Login Error', error);
         return res.status(500).json({ success: false, message: 'Login Error' });
     }
 }
 
 async function logout (req, res) {
-    req.session.destroy((err) => {
-        if (err) {
-            console.log('Error: Impossible to end the session');
+    req.session.destroy((error) => {
+        if (error) {
+            // console.error('Error: Impossible to end the session');
             return res.status(500).json({ success: false, message: 'Impossible to end the session' });
         }
-        console.log('End of session');
+        // console.log('End of session');
 		return res.json({ message: 'End of session'});
 	})
 }

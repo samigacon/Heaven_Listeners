@@ -20,14 +20,14 @@ export default function PlaylistRenamePage () {
                 }),
             });
             if (response.ok) {
-                console.log('Renaming Done');
+                // console.log('Renaming Done');
                 setMessage('Renaming Done');
             } else {
-                console.log('Renaming Error' + ' ' + response.status + ' ' + response.statusText);
+                // console.log('Renaming Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Renaming Error');
             }
         } catch (error) {
-            console.log('Renaming Query Error', error);
+            // console.error('Renaming Query Error', error);
             setMessage('Renaming Query Error.');
         }
     }
