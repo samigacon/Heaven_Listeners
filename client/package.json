@@ -1,4 +1,4 @@
-{
+{   "homepage": "https://samigacon.github.io/Heaven_Listeners",
     "name": "heaven listeners front",
     "private": true,
     "version": "1.0.0",
@@ -25,6 +25,8 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.3",
         "sass": "^1.69.5",
+        "gh-pages": "^6.1.1",
+        "typescript": "^5.3.3",
         "vite": "^4.4.5"
     }
 }
