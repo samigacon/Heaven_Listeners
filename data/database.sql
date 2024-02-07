@@ -1,0 +1,71 @@
+CREATE TABLE User (
+    User_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(255) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Artist (
+    Artist_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL UNIQUE,
+    Bio TEXT,
+    Photo BLOB
+);
+
+CREATE TABLE Album (
+    Album_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Release_Date DATE,
+    Cover BLOB
+);
+
+CREATE TABLE Track (
+    Track_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Duration INT, 
+    Release_Date DATE,
+    Cover BLOB,
+    Album_ID INT,
+    FOREIGN KEY (Album_ID) REFERENCES Album(Album_ID) ON DELETE SET NULL
+);
+
+CREATE TABLE History (
+    History_ID INT AUTO_INCREMENT PRIMARY KEY,
+    User_ID INT,
+    Track_ID INT,
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Track_ID) REFERENCES Track(Track_ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Favorite (
+    Favorite_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Addition_Date DATE NOT NULL,
+    User_ID INT,
+    Track_ID INT,
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Track_ID) REFERENCES Track(Track_ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Playlist (
+    Playlist_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Description TEXT,
+    Creation_Date DATE NOT NULL,
+    User_ID INT,
+    FOREIGN KEY (User_ID) REFERENCES User(User_ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Track_Playlist (
+    Playlist_ID INT,
+    Track_ID INT,
+    PRIMARY KEY (Playlist_ID, Track_ID),
+    FOREIGN KEY (Playlist_ID) REFERENCES Playlist(Playlist_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Track_ID) REFERENCES Track(Track_ID) ON DELETE CASCADE
+);
+
+CREATE TABLE Track_Artist (
+    Track_ID INT,
+    Artist_ID INT,
+    PRIMARY KEY (Track_ID, Artist_ID),
+    FOREIGN KEY (Track_ID) REFERENCES Track(Track_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Artist_ID) REFERENCES Artist(Artist_ID) ON DELETE CASCADE
+);

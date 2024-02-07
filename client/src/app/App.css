@@ -1,0 +1,309 @@
+.container {
+  margin: auto;
+  height: auto;
+  background-color: #FBE5CF;
+  width: 95%;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+*:focus {
+  background-color: yellow;
+  color: #000;
+}
+
+.login-page button:focus {
+  background-color: yellow;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../../public/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+h1, h2, h3, p, ul, li, a, label {
+  font-family: "Bebas Neue";
+  font-weight: normal;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 10px;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 10px;
+  font-size: 22px;
+}
+
+li {
+  padding: 10px;
+}
+
+header li {
+  margin: 10px;
+  text-decoration: none;
+  color: #000;
+  background-color: #1E90FF;
+  border-radius: 15px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+a:hover {
+  color: #FFF;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.home-history, .home-favorites {
+  font-family: "Bebas Neue";
+  margin: auto;
+  width: 75%;
+  height: 50px;
+  padding: 40px;
+  background-color: #999;
+  border-radius: 15px;
+}
+
+.home-playlists {
+  font-family: "Bebas Neue";
+  margin: auto;
+  width: 75%;
+  height: 50px;
+  padding: 40px;
+  background-color: #FFF;
+  border-radius: 15px;
+}
+
+.button-history, .button-favorites, .button-playlists {
+  font-family: "Bebas Neue";
+  width: 20%;
+  margin-left: 30px;
+  padding: 5px;
+}
+
+.search-bar {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+::placeholder {
+  font-size: 12px;
+  font-family: "Bebas Neue";
+  padding-left: 2px;
+  opacity: 0.5;
+}
+
+.search-bar button {
+  display: block;
+  margin: auto;
+  font-family: "Bebas Neue";
+  border-radius: 5px;
+  border: 1px solid;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #FFF;
+}
+
+.search-bar button:hover {
+  color: #FFF;
+  background-color: #1E90FF;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.search-artist, .search-tracks, .search-album {
+  display: flex;
+  overflow: scroll;
+  font-family: "Bebas Neue";
+  margin: auto;
+  width: 75%;
+  height: 50px;
+  padding: 40px;
+  background-color: #FFF;
+  border-radius: 15px;
+  gap: 15px;
+}
+
+.search-tag {
+  font-family: "Bebas Neue";
+  width: 20%;
+  margin-left: 30px;
+  padding: 5px;
+}
+
+.search-artist img, .search-tracks img, .search-album img {
+  max-width: 80%;
+  max-height: 80%;
+  width: 200px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.search-artist img:hover, .search-tracks img:hover, .search-album img:hover {
+  max-width: 100%;
+  max-height: 100%;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.artists, .tracks, .albums {
+  background-color: #FBE5CF;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 10px;
+  margin: 0 10px;
+  margin-top: -20px;
+}
+
+.artist-selected {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.library-history, .library-favorites {
+  font-family: "Bebas Neue";
+  font-size: 30px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 40px;
+  background-color: #999;
+  text-align: center;
+  width: 75%;
+  height: 10%;
+  border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.library-playlists {
+  font-family: "Bebas Neue";
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 10px 40px 40px 40px;
+  background-color: #FFF;
+  text-align: center;
+  width: 75%;
+  border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.add-playlist, .delete-playlist, .rename-playlist, .add-track {
+  display: block;
+  margin: auto;
+  font-family: "Bebas Neue";
+  border-radius: 5px;
+  border: 2px solid #1E90FF;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-decoration: none;
+  background-color: #1E90FF;
+  text-decoration: none;
+  border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.add-playlist:hover, .delete-playlist:hover, .rename-playlist:hover, .add-track:hover {
+  color: #FFF;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.library-list {
+  font-family: "Bebas Neue";
+  display: block;
+  margin: auto;
+  background-color: #FBE5CF;
+  width: 75%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.library-list:hover {
+  color: #FFF;
+  background-color: #1E90FF;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.creating-playlist button, .renaming-playlist button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.login-page, .register-page {
+  font-family: "Bebas Neue";
+}
+
+input {
+  display: block;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.login-page button, .register-page button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #1E90FF;
+  font-family: "Bebas Neue";
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid #1E90FF;
+}
+
+.login-page button:hover, .register-page button:hover {
+  color: #FFF;
+  background-color: #1E90FF;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+footer {
+  padding: 5px;
+}
+
+/*# sourceMappingURL=App.css.map */
