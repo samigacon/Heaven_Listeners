@@ -9,7 +9,7 @@ export default function PlaylistPage () {
     React.useEffect(() => {
         const fetchTracks = async () => {
             try {
-                const response = await fetch('http://samigacon.ide.3wa.io:3001/tracks', {
+                const response = await fetch('http://192.168.0.20:3001/tracks', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -21,7 +21,7 @@ export default function LibraryPage () {
         // Collect Playlists
         const fetchPlaylists = async () => {
             try {
-                const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists');
+                const response = await fetch('http://192.168.0.20:3001/playlists');
                 if (response.ok) {
                     const data = await response.json();
                     setPlaylists(data);

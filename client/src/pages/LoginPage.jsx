@@ -37,7 +37,7 @@ export default function LoginPage() {
         }
         
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/register', {
+            const response = await fetch('http://192.168.0.20:3001/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export default function LoginPage() {
     // Login
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/login', {
+            const response = await fetch('http://192.168.0.20:3001/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,14 +78,14 @@ export default function LoginPage() {
                 setIsLoggedIn(true);
                 setUsername(username);
                 localStorage.setItem('userConnected', 'true');
-                // console.log('Login Done');
+                console.log('Login Done');
                 setMessage('Login Done');
             } else {
-                // console.log('Login Error' + ' ' + response.status + ' ' + response.statusText);
+                console.log('Login Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Login Error');
             }
         } catch (error) {
-            // console.log('Login Query Error', error);
+            console.log('Login Query Error', error);
             setMessage('Login Query Error.');
         }
     }
@@ -93,7 +93,7 @@ export default function LoginPage() {
     // Logout
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/logout', {
+            const response = await fetch('http://192.168.0.20:3001/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -105,11 +105,11 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 setMessage('Logout Done');
-               // console.log('Message : ' + message);
+                console.log('Message : ' + message);
                 localStorage.setItem('userConnected', 'false');
                 setIsLoggedIn(false);
             } else {
-                // console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
+                console.log('Logout Error' + ' ' + response.status + ' ' + response.statusText);
                 setMessage('Logout Error');
             }
         } catch (error) {

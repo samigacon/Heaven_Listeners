@@ -14,7 +14,7 @@ export default function TrackAddPage () {
     
     const fetchPlaylists = async () => {
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists');
+            const response = await fetch('http://192.168.0.20:3001/playlists');
             if (response.ok) {
                 const data = await response.json();
                 setPlaylists(data);
@@ -28,7 +28,7 @@ export default function TrackAddPage () {
         // console.log("Playlist_ID : " + Playlist_ID);
         // console.log("Track_Title : " + Track_Title);
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/track-add', {
+            const response = await fetch('http://192.168.0.20:3001/track-add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ export default function PlaylistRenamePage () {
     
     const handleRename = async () => {
         try {
-            const response = await fetch('http://samigacon.ide.3wa.io:3001/playlists-rename', {
+            const response = await fetch('http://192.168.0.20:3001/playlists-rename', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
