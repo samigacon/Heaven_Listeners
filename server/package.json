@@ -4,7 +4,8 @@
     "description": "partie back du projet heaven listeners",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "build": "react-scripts build"
     },
     "author": "sami gacon",
     "license": "ISC",
