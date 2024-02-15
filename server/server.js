@@ -17,8 +17,7 @@ const app = express();
 
 // CORS Configuration
 app.use((req, res, next) => {
-    // res.header('Access-Control-Allow-Origin', 'http://192.168.0.20:3000');
-    res.header('Access-Control-Allow-Origin', 'https://dazzling-nasturtium-836196.netlify.app') // Netlify Configuration
+    res.header('Access-Control-Allow-Origin', 'http://192.168.0.20:3000');
     res.header('Access-Control-Allow-Methods', 'GET, POST, UPDATE, DELETE');
     res.header('Access-Control-Allow-Headers', '*');
     next();
@@ -42,16 +41,6 @@ app.use(session({
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', routes.router);
-
-
-// Serve static files of the React application from the build directory
-app.use(express.static(path.join(__dirname, 'client/dist')));
-
-// Route to serve the React application
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
-});
-
 
 // Discogs
 const dotenv = require('dotenv');
