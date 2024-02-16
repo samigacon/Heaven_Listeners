@@ -59,6 +59,10 @@ const data = new Discogs({
 	consumerSecret: discogsApiSecret
 });
 
+// Hello World
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+  })
 
 // Initialize OAuth Authentication - Discogs Guide
 app.get('/authorize', function(req, res){
