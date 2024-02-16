@@ -37,7 +37,7 @@ export default function LoginPage() {
         }
         
         try {
-            const response = await fetch('http://192.168.0.20:3001/register', {
+            const response = await fetch('https://heaven-listeners-server.vercel.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export default function LoginPage() {
     // Login
     const handleLogin = async () => {
         try {
-            const response = await fetch('http://192.168.0.20:3001/login', {
+            const response = await fetch('https://heaven-listeners-server.vercel.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export default function LoginPage() {
     // Logout
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://192.168.0.20:3001/logout', {
+            const response = await fetch('https://heaven-listeners-server.vercel.app/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -67,7 +67,7 @@ app.get('/authorize', function(req, res){
     oAuth.getRequestToken(
         'kzwaXswmrokVpsgrxEdm', 
         'oRraKrTFCIotmweTGYgAaMarsdFVwIFA', 
-        'http://192.168.0.20:3001/callback', 
+        'https://heaven-listeners-server.vercel.app/callback', 
         function(error, requestData){
             if (error) {
                 console.error('Error During Request Token Request:', error);
