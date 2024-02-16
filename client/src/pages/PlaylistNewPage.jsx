@@ -7,7 +7,7 @@ export default function PlaylistNewPage () {
     
     const handleAdd = async () => {
         try {
-            const response = await fetch('https://heaven-listeners-server.vercel.app/playlists-new', {
+            const response = await fetch('http://192.168.0.20:3001/playlists-new', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

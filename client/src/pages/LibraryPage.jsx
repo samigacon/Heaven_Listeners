@@ -21,7 +21,7 @@ export default function LibraryPage () {
         // Collect Playlists
         const fetchPlaylists = async () => {
             try {
-                const response = await fetch('https://heaven-listeners-server.vercel.app/playlists');
+                const response = await fetch('http://192.168.0.20:3001/playlists');
                 if (response.ok) {
                     const data = await response.json();
                     setPlaylists(data);

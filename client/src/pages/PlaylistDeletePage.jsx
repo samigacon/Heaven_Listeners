@@ -8,7 +8,7 @@ export default function PlaylistDeletePage () {
     
     const handleDelete = async () => {
         try {
-            const response = await fetch('https://heaven-listeners-server.vercel.app/playlists-delete', {
+            const response = await fetch('http://192.168.0.20:3001/playlists-delete', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

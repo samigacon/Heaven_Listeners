@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const SearchDiscogsApi = createApi({
     reducerPath: 'SearchDiscogsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://heaven-listeners-server.vercel.app' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://192.168.0.20:3001' }),
     endpoints: (builder) => ({
         search: builder.query({
             query: (searchQuery) => `/api/discogs/search?q=${searchQuery}`,

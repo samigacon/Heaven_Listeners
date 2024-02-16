@@ -17,7 +17,7 @@ const app = express();
 
 // CORS Configuration
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://heaven-listeners-client.vercel.app');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, UPDATE, DELETE');
     res.header('Access-Control-Allow-Headers', '*');
     next();
@@ -71,7 +71,7 @@ app.get('/authorize', function(req, res){
     oAuth.getRequestToken(
         'kzwaXswmrokVpsgrxEdm', 
         'oRraKrTFCIotmweTGYgAaMarsdFVwIFA', 
-        'https://heaven-listeners-server.vercel.app/callback', 
+        'http://192.168.0.20:3001/callback', 
         function(error, requestData){
             if (error) {
                 console.error('Error During Request Token Request:', error);
