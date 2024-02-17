@@ -105,7 +105,7 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 setMessage('Logout Done');
-                console.log('Message : ' + message);
+                console.log('Message : End of Session');
                 localStorage.setItem('userConnected', 'false');
                 setIsLoggedIn(false);
             } else {
