@@ -67,14 +67,12 @@ async function login (req, res) {
 }
 
 async function logout (req, res) {
-    req.session.destroy((error) => {
-        if (error) {
-            // console.error('Error: Impossible to end the session');
-            return res.status(500).json({ success: false, message: 'Impossible to end the session' });
-        }
-        // console.log('End of session');
-		return res.json({ message: 'End of session'});
-	})
+    try {
+        return res.json({ success: true, message: 'End of Session' });
+    } catch (error) {
+        console.error('Error Logging Out:', error);
+        return res.status(500).json({ success: false, message: 'Error Logging Out' });
+    }
 }
 
 module.exports.register = register;
