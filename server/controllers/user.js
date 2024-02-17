@@ -52,9 +52,9 @@ async function login (req, res) {
         // console.log('Match: ' + match);
         if (match) {
             // Store User Session
-            req.session.user = users[0];
-            req.session.connected = true;
-            return res.json({success: true, user: {...users[0], password: undefined, message: 'Login Successful'}});
+                // req.session.user = users[0];
+                // req.session.connected = true;
+            return res.json({success: true, message: 'Login Successful'});
             
         } else {
             // console.log('Login Failed');
