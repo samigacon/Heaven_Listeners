@@ -3,7 +3,7 @@ const routes = require('./routes/routes.js');
 const path = require('path');
 
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const FileStore = require('session-file-store')(session);
 
 const axios = require('axios');
 
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
+/*
 // User Session
 app.use(session({
     store: new FileStore({
@@ -35,7 +35,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60 * 60 * 1000 }, // Duration Session - 1 Hours
 }));
-
+*/
 
 // Middlewares
 app.use(express.json());
