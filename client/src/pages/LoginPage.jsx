@@ -49,14 +49,14 @@ export default function LoginPage() {
             });
             if (response.ok) {
                 setMessage('Authentication Done');
-                // console.log('Message : ' + message);
+                console.log('Message : ' + message);
                 
             } else {
-                // console.log('Authentication Error', response.status, response.statusText);
+                console.log('Authentication Error', response.status, response.statusText);
                 setMessage('Authentication Error');
             }
         } catch (error) {
-            // console.log('Register Query Error', error);
+            console.log('Register Query Error', error);
             setMessage('Register Query Error');
         }
     }
@@ -113,7 +113,7 @@ export default function LoginPage() {
                 setMessage('Logout Error');
             }
         } catch (error) {
-            // console.log('Logout Query Error', error);
+            console.log('Logout Query Error', error);
             setMessage('Logout Query Error.');
         }
     }
