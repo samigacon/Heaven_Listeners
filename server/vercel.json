@@ -4,6 +4,6 @@
         { "src": "./server.js", "use": "@vercel/node" }
     ],
     "rewrites": [
-        { "source": "/(.*)", "destination": "./../client/index.html" }
+        { "source": "/(.*)", "destination": "/client/index.html" }
     ]
 }
