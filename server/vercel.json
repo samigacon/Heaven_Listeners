@@ -7,6 +7,6 @@
         { "src": "/(.*)", "dest": "/server.js" }
     ],
     "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
+        { "source": "/(.*)", "destination": "./../client/index.html" }
     ]
 }
