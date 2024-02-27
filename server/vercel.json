@@ -11,7 +11,7 @@
             "use": "@vercel/static-build",
             "config": 
             {
-                "distDir": "build"
+                "distDir": "dist"
             }
         }
   ],
@@ -20,14 +20,6 @@
         {
             "src": "/(.*)",
             "dest": "/server.js"
-        },
-        {
-            "src": "^/static/(.*)",
-            "dest": "/client/static/$1"
-        },
-        {
-            "src": "/(.*)\\.png",
-            "dest": "/client/$1.png"
         },
         {
             "src": "/(.*)",
