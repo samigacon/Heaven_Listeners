@@ -64,6 +64,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
+// Sending Routes to Client  
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+});
+
 // Initialize OAuth Authentication - Discogs Guide
 app.get('/authorize', function(req, res){
     const oAuth = new Discogs().oauth();
